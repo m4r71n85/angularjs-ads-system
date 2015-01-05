@@ -29,6 +29,13 @@ app.config([
                 pageTitle: 'Home'
             }
         });
+        $stateProvider.state('login', {
+            url: '/login',
+            templateUrl: 'App/templates/login.html',
+            data: {
+                pageTitle: 'Login'
+            }
+        });
     }
 ]);
 
