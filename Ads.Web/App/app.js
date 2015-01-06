@@ -1,11 +1,13 @@
 ﻿'use strict';
 
 var app = angular.module('app', [
-    'ui.bootstrap', 'ui.router', 'angular-loading-bar']);
+    'ui.bootstrap', 'ui.router', 'angular-loading-bar', 'toaster']);
 
 app.config([
     '$stateProvider', '$httpProvider', '$urlRouterProvider', '$provide',
     function ($stateProvider, $httpProvider, $urlRouterProvider, $provide) {
+
+        $provide.constant('apiUrl', 'http://localhost:1337/');
 
         //================================================
         // Make urls case insensitive

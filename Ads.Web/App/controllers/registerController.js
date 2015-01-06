@@ -1,7 +1,10 @@
 ﻿'use strict';
 
 app.controller('registerController',
-['$scope',
-    function ($scope) {
+['authenticationService', '$scope',
+    function (authenticationService, $scope) {
+        $scope.register = function () {
+            authenticationService.register($scope.user);
+        }
     }
 ]);
