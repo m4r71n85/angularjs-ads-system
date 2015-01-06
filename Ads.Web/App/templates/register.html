@@ -1,0 +1,62 @@
+﻿<form>
+    <fieldset>
+
+        <!-- Username -->
+        <legend>User Registration</legend>
+        <div class="col-xs-4">
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="control-label" for="username">Username</label>
+                <input placeholder="Username" class="form-control input-md" id="username" ng-required="true" type="text">
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <label class="control-label" for="password">Password</label>
+                <input placeholder="Password" class="form-control input-md" id="password" ng-required="true" type="password">
+            </div>
+
+            <!-- Name -->
+            <div class="form-group">
+                <label class="control-label" for="name">Name</label>
+                <input placeholder="Name" class="form-control input-md" id="name" ng-required="true" type="text">
+            </div>
+
+            <!-- Phone -->
+            <div class="form-group">
+                <label class="control-label" for="phone">Phone</label>
+                <input placeholder="Phone" class="form-control input-md" id="phone" ng-required="true" type="text">
+            </div>
+        </div>
+
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label class="control-label" for="email">Email</label>
+                <input placeholder="Email" class="form-control input-md" id="email" ng-required="true" type="text">
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <label class="control-label" for="confirm-password">Confirm Password</label>
+                <input placeholder="Confirm Password" class="form-control input-md" id="confirm-password" ng-required="true" type="password">
+            </div>
+
+            <!-- Name -->
+            <div class="form-group">
+                <label class="control-label" for="town">Town</label>
+                <select class="form-control input-md" id="town" ng-required="true" >
+                    <option>Sofia</option>
+                    <option>Varna</option>
+                </select>
+            </div>
+        </div>
+    </fieldset>
+    <div class="row">
+        <div class="col-xs-4 text-center">
+            <button class="btn btn-primary">Register</button>
+        </div>
+        <div class="col-xs-4 text-center">
+            <a ui-sref="login" class="btn btn-default">Login here</a>
+        </div>
+    </div>
+</form>

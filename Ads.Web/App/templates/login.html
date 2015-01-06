@@ -1,10 +1,39 @@
-﻿<form class="form-horizontal col-sm-12" name="loginForm">
-        <h2>Login</h2>
-        <label for="username">Username:</label>
-        <input type="text" autofocus="" placeholder="Username" class="form-control" id="username" ng-required="true">
-        <label for="inputPassword">Password</label>
-        <input type="password" required="" placeholder="Password" class="form-control" id="inputPassword" ng-required="true">
-        
-        <button type="submit" class="btn btn-lg btn-primary btn-block">Login</button>
-        <a href="#">Register here</a>
+﻿<form>
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>Login</legend>
+        <div class="col-xs-12">
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="control-label" for="username">Username</label>
+                <input id="username" name="username" placeholder="Username" class="form-control input-md" ng-required="true" type="text">
+            </div>
+
+            <!-- Password input-->
+            <div class="form-group">
+                <label class="control-label" for="password">Password</label>
+                <input id="password" name="password" placeholder="Password" class="form-control input-md" ng-required="true" type="password">
+            </div>
+
+            <!-- Password input-->
+            <div class="form-group">
+                <label class="control-label" for="confirm-password">Confirm password</label>
+                <input id="confirm-password" name="confirm-password" placeholder="Confirm password" class="form-control input-md" ng-required="true" type="password">
+            </div>
+
+            <!-- Button -->
+            <div class="form-group">
+                <label class="control-label" for="login"></label>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button id="login" name="login" class="btn btn-primary">Login</button>
+                        <div class="pull-right">
+                            <a ui-sref="register" class="btn btn-default">Register here</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</fieldset>
 </form>

@@ -109,7 +109,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Api\" />
-    <Folder Include="App\controllers\" />
     <Folder Include="App\directives\" />
     <Folder Include="App\factories\" />
     <Folder Include="App\filters\" />
@@ -130,6 +129,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\app.js" />
+    <Content Include="App\controllers\loginController.js" />
     <Content Include="App\templates\home.html" />
     <Content Include="App\templates\login.html" />
     <Content Include="Content\bootstrap-theme.css" />

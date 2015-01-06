@@ -25,16 +25,17 @@ app.config([
         $stateProvider.state('home', {
             url: '/',
             templateUrl: 'App/templates/home.html',
-            data: {
-                pageTitle: 'Home'
-            }
         });
         $stateProvider.state('login', {
             url: '/login',
             templateUrl: 'App/templates/login.html',
-            data: {
-                pageTitle: 'Login'
-            }
+            controller: 'loginController'
+        });
+
+        $stateProvider.state('register', {
+            url: '/register',
+            templateUrl: 'App/templates/register.html',
+            controller: 'registerController'
         });
     }
 ]);
