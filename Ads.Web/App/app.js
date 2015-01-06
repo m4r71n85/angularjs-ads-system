@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 var app = angular.module('app', [
-    'ui.bootstrap', 'ui.router', 'angular-loading-bar', 'toaster']);
+    'ui.bootstrap', 'ui.router', 'angular-loading-bar', 'toaster', 'ngCookies']);
 
 app.config([
     '$stateProvider', '$httpProvider', '$urlRouterProvider', '$provide',
@@ -27,6 +27,7 @@ app.config([
         $stateProvider.state('home', {
             url: '/',
             templateUrl: 'App/templates/home.html',
+            controller: 'homeController'
         });
         $stateProvider.state('login', {
             url: '/login',

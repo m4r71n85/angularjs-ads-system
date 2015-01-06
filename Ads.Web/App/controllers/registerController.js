@@ -1,10 +1,15 @@
 ﻿'use strict';
 
 app.controller('registerController',
-['authenticationService', '$scope',
-    function (authenticationService, $scope) {
+['authenticationService', '$state', '$scope',
+    function (authenticationService, $state, $scope) {
+        
+
         $scope.register = function () {
             authenticationService.register($scope.user);
+            $state.go('home');
         }
+        $scope.isLoggedIn = authenticationService.isLoggedIn();
+        console.log($scope.data);
     }
 ]);
