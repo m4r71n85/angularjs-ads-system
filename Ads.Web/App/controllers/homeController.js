@@ -34,7 +34,7 @@ app.controller('homeController',
         }
 
         $scope.isLoggedIn = authenticationService.isLoggedIn();
-        $scope.$on('login', function () {
+        $scope.$on('authState', function () {
             $scope.isLoggedIn = authenticationService.isLoggedIn();
         });
     }

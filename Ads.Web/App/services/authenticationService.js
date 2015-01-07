@@ -32,9 +32,14 @@ app.factory('authenticationService', [
             return deferred.promise;
         }
 
+        var logout = function (data) {
+            delete $cookies.userSession;
+            $rootScope.$broadcast('authState');
+        }
+
         var setSession = function(data) {
             $cookies.userSession = JSON.stringify(data);
-            $rootScope.$broadcast('login');
+            $rootScope.$broadcast('authState');
         }
 
         var getSession = function() {
@@ -57,8 +62,9 @@ app.factory('authenticationService', [
         }
 
         return ({
-            register: register,
             login: login,
+            logout: logout,
+            register: register,
             getSession: getSession,
             getToken: getToken,
             getUsername: getUsername,

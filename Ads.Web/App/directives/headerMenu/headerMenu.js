@@ -6,7 +6,8 @@
             templateUrl: '/app/directives/headerMenu/headerMenu.html',
             replace: true,
             controller: [
-                '$scope', '$state', function ($scope, $state) {
+                'authenticationService', '$scope', '$state',
+                function (authenticationService, $scope, $state) {
                     $scope.$state = $state;
 
                     $scope.headerMenuItems = [
@@ -16,9 +17,17 @@
                         { title: "Edit Profile", sref: "#", authenticated: true }
                     ];
 
+
+                    $scope.logout = function () {
+                        authenticationService.logout();
+                        $state.go('home');
+                    }
+
                     $scope.isLoggedIn = authenticationService.isLoggedIn();
-                    $scope.$on('login', function () {
+
+                    $scope.$on('authState', function () {
                         $scope.isLoggedIn = authenticationService.isLoggedIn();
+                        $scope.username = authenticationService.getUsername()
                     });
                 }
             ]

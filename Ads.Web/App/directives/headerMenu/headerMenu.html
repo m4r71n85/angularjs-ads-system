@@ -19,9 +19,9 @@
                 </li>
             </ul>
             
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Martin</a></li>
-                <li><a href="#">Log out</a></li>
+            <ul class="nav navbar-nav navbar-right" ng-show="isLoggedIn">
+                <li><a href="#" ng-bind="username"></a></li>
+                <li><a href ng-click="logout()">Log out</a></li>
             </ul>
         </div>
     </div>
