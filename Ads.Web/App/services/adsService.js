@@ -3,13 +3,13 @@
 'use strict';
 
 app.factory('adsService', [
-    '$http', '$q', 'toaster', 'apiUrl',
-    function ($http, $q, toaster, apiUrl) {
+    'itemsPerPage', '$http', '$q', 'toaster', 'apiUrl',
+    function (itemsPerPage, $http, $q, toaster, apiUrl) {
 
         var settings = {};
 
         var resetSettings = function () {
-            settings = { startPage: 1, pageSize: 3, townId: '', categoryId: '' };
+            settings = { startPage: 1, pageSize: itemsPerPage, townId: '', categoryId: '' };
         }
         
         var getAds = function () {
@@ -18,8 +18,8 @@ app.factory('adsService', [
                 params: {
                     startpage: settings.startPage,
                     pagesize: settings.pageSize,
-                    townid: settings.townId,
                     categoryid: settings.categoryId,
+                    townid: settings.townId,
                 }
             })
             .success(function (data) {
@@ -49,14 +49,19 @@ app.factory('adsService', [
             settings.startPage = 1;
         }
 
+        var getSettings = function () {
+            return settings;
+        }
+
         resetSettings();
 
         return ({
             getAds: getAds,
-            setPage: setPage,
             setCategory: setCategory,
             setTown: setTown,
-            getPage: getPage
+            getPage: getPage,
+            setPage: setPage,
+            getSettings: getSettings
         });
     }
 ])

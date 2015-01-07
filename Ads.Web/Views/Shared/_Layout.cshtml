@@ -11,17 +11,17 @@
         <div class="container" role="main">
             <header-menu></header-menu>
         </div>
+        <div class="container">
+            <section id="main-section">
+                @RenderBody()
+            </section>
 
-        <section id="main-section">
-            @RenderBody()
-        </section>
-
-        <footer>
-            footer
-        </footer>
-
-        @Scripts.Render("~/bundles/js/lib")
-        @Scripts.Render("~/bundles/js/spa")
-        @RenderSection("scripts", false)
-    </body>
+            <footer>
+                footer
+            </footer>
+        </div>
+            @Scripts.Render("~/bundles/js/lib")
+            @Scripts.Render("~/bundles/js/spa")
+            @RenderSection("scripts", false)
+</body>
 </html>
