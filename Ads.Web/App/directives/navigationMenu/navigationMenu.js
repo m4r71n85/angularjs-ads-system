@@ -1,18 +1,25 @@
-﻿app.directive('navigationMenu', [function () {
+﻿app.directive('navigationMenu',
+    ['authenticationService',
+    function (authenticationService) {
     return {
         restrict: 'AE',
         replace:true,
-        templateUrl: 'app/directives/navigationMenu/navigarionMenu.html',
+        templateUrl: '/app/directives/navigationMenu/navigationMenu.html',
         controller: [
             '$scope', '$state', function ($scope, $state) {
                 $scope.$state = $state;
 
                 $scope.menuItems = [
-                    { title: "Home", sref: "home" },
-                    { title: "My Ads", sref: "#" },
-                    { title: "Publish New Ad", sref: "#" },
-                    { title: "Edit Profile", sref: "#" }
+                    { title: "Home", sref: "home"},
+                    { title: "My Ads", sref: "#", authenticated: true },
+                    { title: "Publish New Ad", sref: "#", authenticated: true },
+                    { title: "Edit Profile", sref: "#", authenticated: true}
                 ];
+
+                $scope.isLoggedIn = authenticationService.isLoggedIn();
+                $scope.$on('login', function () {
+                    $scope.isLoggedIn = authenticationService.isLoggedIn();
+                });
             }
         ]
     }
