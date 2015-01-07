@@ -131,6 +131,8 @@
     <Content Include="App\controllers\homeController.js" />
     <Content Include="App\controllers\loginController.js" />
     <Content Include="App\controllers\registerController.js" />
+    <Content Include="App\directives\headerMenu\headerMenu.js" />
+    <Content Include="App\directives\headerMenu\headerMenu.html" />
     <Content Include="App\directives\loginRegisterMenu\loginRegister.js" />
     <Content Include="App\directives\loginRegisterMenu\loginRegisterMenu.html" />
     <Content Include="App\directives\navigationMenu\navigationMenu.html" />
