@@ -1,0 +1,8 @@
+﻿<ul class="nav nav-pills nav-stacked">
+    <li><h4>Navigation</h4></li>
+    <li ng-repeat="item in menuItems" ng-class="{active: $state.includes(item.sref)}">
+        <a ui-sref="{{item.sref}}">
+            {{item.title}}
+        </a>
+    </li>
+</ul>

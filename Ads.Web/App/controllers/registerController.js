@@ -6,10 +6,10 @@ app.controller('registerController',
         
 
         $scope.register = function () {
-            authenticationService.register($scope.user);
-            $state.go('home');
+            authenticationService.register($scope.user).then(
+                function () {
+                    $state.go('home');
+                });
         }
-        $scope.isLoggedIn = authenticationService.isLoggedIn();
-        console.log($scope.data);
     }
 ]);
