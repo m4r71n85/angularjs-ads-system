@@ -3,12 +3,8 @@
 app.factory('authenticationService', [
     '$http', '$cookies', '$q', '$rootScope', 'toaster', 'apiUrl',
     function ($http, $cookies, $q, $rootScope, toaster, apiUrl) {
-        //var sessionObj = {},
-        //    tokenObj = {},
-        //    usernameObj = {},
-        //    isLoggedInObj = {};
 
-        function register(user){
+        var register = function(user) {
             var deferred = $q.defer();
             $http.post(apiUrl + 'api/user/register', user)
                 .success(function (data) {
@@ -22,7 +18,7 @@ app.factory('authenticationService', [
             return deferred.promise;
         }
 
-        function login(user) {
+        var login = function(user) {
             var deferred = $q.defer();
             $http.post(apiUrl + 'api/user/login', user)
                 .success(function (data) {
@@ -36,27 +32,27 @@ app.factory('authenticationService', [
             return deferred.promise;
         }
 
-        function setSession(data) {
+        var setSession = function(data) {
             $cookies.userSession = JSON.stringify(data);
             $rootScope.$broadcast('login');
         }
 
-        function getSession() {
+        var getSession = function() {
             if ($cookies.userSession) {
                 return JSON.parse($cookies.userSession);
             }
             return false;
         }
 
-        function getToken() {
+        var getToken = function() {
             return getSession().access_token;
         }
 
-        function getUsername() {
+        var getUsername = function() {
             return getSession().username;
         }
 
-        function isLoggedIn() {
+        var isLoggedIn = function() {
             return !!getSession();
         }
 

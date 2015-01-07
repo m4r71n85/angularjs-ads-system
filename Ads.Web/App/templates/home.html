@@ -1,4 +1,56 @@
-﻿home
-<pre>
-{{isLoggedIn|json}}
-</pre>
+﻿<div class="col-sm-10">
+    <div ng-repeat="ad in ads.ads">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title" >
+                    <span ng-bind="ad.title"></span>
+                    <span class="pull-right" ng-bind="ad.date| date:'dd/MMM/yyyy'"></span>
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="col-sm-3">
+                    <img ng-src="{{ad.imageDataUrl}}" src="../../Content/images/nophoto.jpg" class="img-responsive" />
+                </div>
+                <div class="col-sm-9">
+                    <div class="well" ng-bind="ad.text"></div>
+                    <div class="row">
+                        <div class="col-sm-2">Name: </div>
+                        <div class="col-sm-10" ng-bind="ad.ownerName"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">Email: </div>
+                        <div class="col-sm-10">
+                            <a ng-href="mailto: {{ad.ownerEmail}}" ng-bind="ad.ownerEmail"></a></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">Phone: </div>
+                        <div class="col-sm-10" ng-bind="ad.ownerPhone"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-2">
+    <ul class="nav nav-pills nav-stacked margin-bottom-15">
+        <li><h4>Categories</h4></li>
+        <li><a href>All</a></li>
+        <li ng-repeat="category in allCategories">
+            <a href>
+                {{category.name}}
+            </a>
+        </li>
+    </ul>
+    <div data-example-id="vertical-button-group">
+        <ul class="nav nav-pills nav-stacked margin-bottom-15">
+            <li><h4>Towns</h4></li>
+            <li><a href>All</a></li>
+            <li ng-repeat="town in allTowns">
+                <a href>
+                    {{town.name}}
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

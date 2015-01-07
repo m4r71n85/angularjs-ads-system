@@ -1,10 +1,14 @@
 ﻿'use strict';
 
 app.controller('homeController',
-['authenticationService', '$scope',
-    function (authenticationService, $scope) {
+['ads', 'allCategories', 'allTowns', 'authenticationService', '$scope',
+    function (ads, allCategories, allTowns, authenticationService, $scope) {
+
+        $scope.allCategories = allCategories;
+        $scope.allTowns = allTowns;
+        $scope.ads = ads;
+
         $scope.isLoggedIn = authenticationService.isLoggedIn();
-        console.log($scope.data);
         $scope.$on('login', function () {
             $scope.isLoggedIn = authenticationService.isLoggedIn();
         });

@@ -1,4 +1,6 @@
-﻿app.directive('navigationMenu',
+﻿'use strict';
+
+app.directive('navigationMenu',
     ['authenticationService',
     function (authenticationService) {
     return {
@@ -10,7 +12,7 @@
                 $scope.$state = $state;
 
                 $scope.navigationMenuItems = [
-                    { title: "Home", sref: "home"},
+                    { title: "Home", sref: "home" },
                     { title: "My Ads", sref: "#", authenticated: true },
                     { title: "Publish New Ad", sref: "#", authenticated: true },
                     { title: "Edit Profile", sref: "#", authenticated: true}

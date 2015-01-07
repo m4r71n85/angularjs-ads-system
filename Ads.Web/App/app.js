@@ -27,7 +27,22 @@ app.config([
         $stateProvider.state('home', {
             url: '/',
             templateUrl: 'App/templates/home.html',
-            controller: 'homeController'
+            controller: 'homeController',
+            resolve: {
+                allCategories: [
+                    'menuItemsServices', function (menuItemsServices) {
+                        return menuItemsServices.getAllCategories();
+                }],
+                allTowns: [
+                    'menuItemsServices', function (menuItemsServices) {
+                        return menuItemsServices.getAllTowns();
+                }],
+                ads: [
+                    'adsService', function (adsService) {
+                        return adsService.getAds();
+                    }
+                ]
+            },
         });
         $stateProvider.state('login', {
             url: '/login',
