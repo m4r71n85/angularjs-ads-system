@@ -9,7 +9,7 @@
             '$scope', '$state', function ($scope, $state) {
                 $scope.$state = $state;
 
-                $scope.menuItems = [
+                $scope.navigationMenuItems = [
                     { title: "Home", sref: "home"},
                     { title: "My Ads", sref: "#", authenticated: true },
                     { title: "Publish New Ad", sref: "#", authenticated: true },
