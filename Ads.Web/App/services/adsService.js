@@ -31,6 +31,18 @@ app.factory('adsService', [
             return deferred.promise;
         }
 
+        var getUserAds = function () {
+            var deferred = $q.defer();
+            $http.get(apiUrl + 'api/user/ads')
+            .success(function (data) {
+                deferred.resolve(data);
+            })
+            .error(function (data, status) {
+                deferred.reject(data, status);
+            });
+            return deferred.promise;
+        }
+
         var setPage = function (page) {
             settings.startPage = page;
         }
@@ -57,6 +69,7 @@ app.factory('adsService', [
 
         return ({
             getAds: getAds,
+            getUserAds: getUserAds,
             setCategory: setCategory,
             setTown: setTown,
             getPage: getPage,

@@ -1,8 +1,7 @@
 ﻿'use strict';
 
 app.directive('navigationMenu',
-    ['authenticationService',
-    function (authenticationService) {
+    ['authSessionHelper', function (authSessionHelper) {
     return {
         restrict: 'AE',
         replace:true,
@@ -18,9 +17,9 @@ app.directive('navigationMenu',
                     { title: "Edit Profile", sref: "#", authenticated: true}
                 ];
 
-                $scope.isLoggedIn = authenticationService.isLoggedIn();
+                $scope.isLoggedIn = authSessionHelper.isLoggedIn();
                 $scope.$on('authState', function () {
-                    $scope.isLoggedIn = authenticationService.isLoggedIn();
+                    $scope.isLoggedIn = authSessionHelper.isLoggedIn();
                 });
             }
         ]

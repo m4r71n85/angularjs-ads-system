@@ -1,8 +1,8 @@
 ﻿'use strict';
 
 app.controller('homeController',
-['ads', 'allCategories', 'allTowns', 'adsService', 'authenticationService', '$scope', 'itemsPerPage',
-    function (ads, allCategories, allTowns, adsService, authenticationService, $scope, itemsPerPage) {
+['ads', 'allCategories', 'allTowns', 'adsService', 'authSessionHelper', '$scope', 'itemsPerPage',
+    function (ads, allCategories, allTowns, adsService, authSessionHelper, $scope, itemsPerPage) {
         $scope.itemsPerPage = itemsPerPage;
         $scope.allCategories = allCategories;
         $scope.allTowns = allTowns;
@@ -33,9 +33,9 @@ app.controller('homeController',
                 })
         }
 
-        $scope.isLoggedIn = authenticationService.isLoggedIn();
+        $scope.isLoggedIn = authSessionHelper.isLoggedIn();
         $scope.$on('authState', function () {
-            $scope.isLoggedIn = authenticationService.isLoggedIn();
+            $scope.isLoggedIn = authSessionHelper.isLoggedIn();
         });
     }
 ]);

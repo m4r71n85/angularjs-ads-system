@@ -1,13 +1,13 @@
 ﻿app.directive('headerMenu',
-    ['authenticationService',
-    function (authenticationService) {
+    ['authenticationService', 'authSessionHelper',
+    function (authenticationService, authSessionHelper) {
         return {
             restrict: 'AE',
             templateUrl: '/app/directives/headerMenu/headerMenu.html',
             replace: true,
             controller: [
-                'authenticationService', '$scope', '$state',
-                function (authenticationService, $scope, $state) {
+                'authenticationService', 'authSessionHelper', '$scope', '$state',
+                function (authenticationService, authSessionHelper, $scope, $state) {
                     $scope.$state = $state;
 
                     $scope.headerMenuItems = [
@@ -23,11 +23,11 @@
                         $state.go('home');
                     }
 
-                    $scope.isLoggedIn = authenticationService.isLoggedIn();
+                    $scope.isLoggedIn = authSessionHelper.isLoggedIn();
 
                     $scope.$on('authState', function () {
-                        $scope.isLoggedIn = authenticationService.isLoggedIn();
-                        $scope.username = authenticationService.getUsername()
+                        $scope.isLoggedIn = authSessionHelper.isLoggedIn();
+                        $scope.username = authSessionHelper.getUsername()
                     });
                 }
             ]

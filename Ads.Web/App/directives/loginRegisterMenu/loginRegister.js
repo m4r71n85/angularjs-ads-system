@@ -1,12 +1,12 @@
 ﻿app.directive('loginRegisterMenu',
-    ['authenticationService',
-    function (authenticationService) {
+    [function () {
         return {
             restrict: 'AE',
             templateUrl: '/app/directives/loginRegisterMenu/loginRegisterMenu.html',
             replace: true,
             controller: [
-                '$scope', '$state', function ($scope, $state) {
+                '$scope', '$state', 'authSessionHelper',
+                function ($scope, $state, authSessionHelper) {
                     $scope.$state = $state;
 
                     $scope.loginRegisterMenuItems = [
@@ -14,9 +14,9 @@
                         { title: "Register", sref: "register"},
                     ];
 
-                    $scope.isLoggedIn = authenticationService.isLoggedIn();
+                    $scope.isLoggedIn = authSessionHelper.isLoggedIn();
                     $scope.$on('authState', function () {
-                        $scope.isLoggedIn = authenticationService.isLoggedIn();
+                        $scope.isLoggedIn = authSessionHelper.isLoggedIn();
                     });
                 }
             ]

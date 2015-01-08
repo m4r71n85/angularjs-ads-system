@@ -11,6 +11,11 @@ app.config([
         $provide.constant('itemsPerPage', 3);
 
         //================================================
+        //add an request interceptor
+        //================================================
+        $httpProvider.interceptors.push('authInterceptor');
+
+        //================================================
         // Make urls case insensitive
         //================================================
         $urlRouterProvider.rule(function ($injector, $location) {
