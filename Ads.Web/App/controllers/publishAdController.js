@@ -1,7 +1,7 @@
 ﻿/// <reference path="../services/adsService.js" />
 'use strict';
 
-app.controller('publishController',
+app.controller('publishAdController',
 ['adsService', 'allCategories', 'allTowns', '$state', '$scope',
     function (adsService ,allCategories, allTowns, $state, $scope) {
         $scope.ad = {};
@@ -9,7 +9,10 @@ app.controller('publishController',
         $scope.allTowns = allTowns;
 
         $scope.publish = function () {
-            adsService.publishAd($scope.ad);
+            adsService.publishAd($scope.ad).then(
+                function () {
+                    $state.go('userAds')
+                });
         }
 
         $scope.fileSelected = function (fileInputField) {

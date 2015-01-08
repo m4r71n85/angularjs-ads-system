@@ -1,8 +1,8 @@
 ﻿'use strict';
 
 app.controller('userAdsController',
-['ads', 'adsFilterHelper', 'adsService', '$modal', '$scope', 'itemsPerPage',
-    function (ads, adsFilterHelper, adsService, $modal, $scope, itemsPerPage) {
+['ads', 'adsFilterHelper', 'adsService', '$modal', '$state', '$scope', 'itemsPerPage',
+    function (ads, adsFilterHelper, adsService, $modal, $state, $scope, itemsPerPage) {
         adsFilterHelper.resetSettings();
         $scope.itemsPerPage = itemsPerPage;
         $scope.ads = ads;
@@ -39,6 +39,10 @@ app.controller('userAdsController',
                         ad.status = 'Inactive';
                     });
             });
+        }
+
+        $scope.edit = function (adId) {
+            $state.go('editAd', { 'adId': adId });
         }
 
         $scope.isPublishedOrWaiting = function (status) {

@@ -65,9 +65,30 @@ app.config([
 
         $stateProvider.state('publish', {
             url: '/user/ads/publish',
-            templateUrl: 'App/templates/publish.html',
-            controller: 'publishController',
+            templateUrl: 'App/templates/publishAd.html',
+            controller: 'publishAdController',
             resolve: {
+                allCategories: [
+                    'menuItemsServices', function (menuItemsServices) {
+                        return menuItemsServices.getAllCategories();
+                    }],
+                allTowns: [
+                    'menuItemsServices', function (menuItemsServices) {
+                        return menuItemsServices.getAllTowns();
+                    }],
+            }
+        });
+
+        $stateProvider.state('editAd', {
+            url: '/user/ads/edit/{adId}',
+            templateUrl: 'App/templates/editAd.html',
+            controller: 'editAdController',
+            resolve: {
+                ad: [
+                    'adsService', '$stateParams', function (adsService, $stateParams) {
+                        return adsService.getAd($stateParams.adId);
+                    }
+                ],
                 allCategories: [
                     'menuItemsServices', function (menuItemsServices) {
                         return menuItemsServices.getAllCategories();
