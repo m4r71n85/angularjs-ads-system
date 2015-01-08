@@ -111,6 +111,22 @@ app.config([
                     }]
             }
         })
+
+        $stateProvider.state('userProfile', {
+            url: '/user/profile',
+            templateUrl: 'App/templates/userProfile.html',
+            controller: 'userProfileController',
+            resolve: {
+                userProfile: [
+                    'userProfileService', function (userProfileService) {
+                        return userProfileService.get();
+                    }],
+                allTowns: [
+                    'menuItemsServices', function (menuItemsServices) {
+                        return menuItemsServices.getAllTowns();
+                    }],
+            }
+        })
     }
 ]);
 

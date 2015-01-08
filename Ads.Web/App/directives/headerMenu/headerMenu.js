@@ -14,7 +14,7 @@
                         { title: "Home", sref: "home" },
                         { title: "My Ads", sref: "userAds", authenticated: true },
                         { title: "Publish New Ad", sref: "publish", authenticated: true },
-                        { title: "Edit Profile", sref: "#", authenticated: true }
+                        { title: "Edit Profile", sref: "userProfile", authenticated: true }
                     ];
 
 
