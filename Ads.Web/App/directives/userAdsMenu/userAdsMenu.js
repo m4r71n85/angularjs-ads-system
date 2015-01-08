@@ -7,11 +7,10 @@ app.directive('userAdsMenu',
         replace:true,
         templateUrl: '/app/directives/userAdsMenu/userAdsMenu.html',
         controller: [
-            'adsFilterHelper', '$state', '$stateParams', '$scope',
-            function (adsFilterHelper, $state, $stateParams, $scope) {
-                adsFilterHelper.resetSettings();
+            'adsFilterHelper', '$rootScope', '$state', '$stateParams', '$scope',
+            function (adsFilterHelper, $rootScope, $state, $stateParams, $scope) {
                 $scope.$state = $state;
-                $scope.currentStatus = adsFilterHelper.getStatus();
+                $scope.adsFilterHelper = adsFilterHelper;
 
                 $scope.userAdsMenuItems = [
                     { title: "All", status: "" },
@@ -20,6 +19,11 @@ app.directive('userAdsMenu',
                     { title: "Inactive", status: "inactive" },
                     { title: "Rejected", status: "rejected" },
                 ];
+
+                $scope.setFilter = function (status) {
+                    adsFilterHelper.setStatus(status);
+                    $rootScope.$broadcast('statusSet');
+                }
 
                 $scope.isLoggedIn = authSessionHelper.isLoggedIn();
                 $scope.$on('authState', function () {

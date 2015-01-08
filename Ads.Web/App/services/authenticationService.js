@@ -33,8 +33,16 @@ app.factory('authenticationService', [
         }
 
         var logout = function (data) {
-            authSessionHelper.clearSession();
-            $rootScope.$broadcast('authState');
+            var deferred = $q.defer();
+            $http.post(apiUrl + 'api/user/logout')
+                .success(function (data) {
+                    authSessionHelper.clearSession();
+                    $rootScope.$broadcast('authState');
+                })
+                .error(function (data, status) {
+                    deferred.reject(data, status);
+                });
+            return deferred.promise;
         }
 
         return ({

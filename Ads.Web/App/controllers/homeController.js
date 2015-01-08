@@ -3,7 +3,6 @@
 app.controller('homeController',
 ['ads', 'allCategories', 'allTowns', 'adsFilterHelper', 'adsService', 'authSessionHelper', '$scope', 'itemsPerPage',
     function (ads, allCategories, allTowns, adsFilterHelper, adsService, authSessionHelper, $scope, itemsPerPage) {
-        adsFilterHelper.resetSettings();
         $scope.itemsPerPage = itemsPerPage;
         $scope.allCategories = allCategories;
         $scope.allTowns = allTowns;

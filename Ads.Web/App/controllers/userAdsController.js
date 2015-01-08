@@ -10,6 +10,14 @@ app.controller('userAdsController',
 
         $scope.loadPage = function () {
             adsFilterHelper.setPage($scope.currentPage);
+            setUserAds();
+        }
+
+        $scope.$on('statusSet', function () {
+            setUserAds()
+        });
+
+        function setUserAds() {
             adsService.getUserAds().then(
                 function (data) {
                     $scope.ads = data;

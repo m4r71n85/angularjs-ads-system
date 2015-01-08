@@ -93,3 +93,11 @@ app.config([
     }
 ]);
 
+//================================================
+// Reset filters on state change
+//================================================ 
+app.run(['$rootScope', 'adsFilterHelper', function ($rootScope, adsFilterHelper) {
+    $rootScope.$on("$stateChangeSuccess ", function (event, toState, toParams) {
+        adsFilterHelper.resetSettings();
+    });
+}]);

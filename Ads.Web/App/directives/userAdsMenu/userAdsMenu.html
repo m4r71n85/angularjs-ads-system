@@ -2,8 +2,8 @@
     <li><h4>My Ads</h4></li>
     <!--!item.authenticated || item.authenticated && isloggedin-->
     <li ng-repeat="item in userAdsMenuItems"
-        ng-class="{active: item.status == currentStatus}">
-        <a href ng-click="setFilter({{item.filter}})">
+        ng-class="{active: item.status == adsFilterHelper.getStatus()}">
+        <a href ng-click="setFilter(item.status)">
             {{item.title}}
         </a>
     </li>
