@@ -1,8 +1,8 @@
 ﻿'use strict';
 
 app.controller('userAdsController',
-['ads', 'adsFilterHelper', 'adsService', '$scope', 'itemsPerPage',
-    function (ads, adsFilterHelper, adsService, $scope, itemsPerPage) {
+['ads', 'adsFilterHelper', 'adsService', '$modal', '$scope', 'itemsPerPage',
+    function (ads, adsFilterHelper, adsService, $modal, $scope, itemsPerPage) {
         $scope.itemsPerPage = itemsPerPage;
         $scope.ads = ads;
         adsFilterHelper.resetSettings()
@@ -10,26 +10,31 @@ app.controller('userAdsController',
 
         $scope.loadPage = function () {
             adsFilterHelper.setPage($scope.currentPage);
-            adsService.getAds().then(
+            adsService.getUserAds().then(
                 function (data) {
                     $scope.ads = data;
                 })
         }
 
-        $scope.filterCategory = function (categoryId) {
-            adsFilterHelper.setCategory(categoryId);
-            adsService.getAds().then(
-                function (data) {
-                    $scope.ads = data;
-                });
+        $scope.deactivate = function (id) {
+            $modal.open({
+                templateUrl: 'myModalContent.html',
+                controller: 'ModalInstanceCtrl',
+                size: size,
+                resolve: {
+                    items: function () {
+                        return $scope.items;
+                    }
+                }
+            }).result.then(function (selectedItem) {
+                $scope.selected = selectedItem;
+            }, function () {
+                $log.info('Modal dismissed at: ' + new Date());
+            });
         }
 
-        $scope.filterTown = function (townId) {
-            adsFilterHelper.setTown(townId);
-            adsService.getAds().then(
-                function (data) {
-                    $scope.ads = data;
-                })
+        $scope.isPublishedOrWaiting = function (status) {
+            return (status == 'WaitingApproval' || status == 'Published');
         }
     }
 ]);

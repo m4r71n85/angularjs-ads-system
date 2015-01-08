@@ -28,7 +28,7 @@ app.config([
         //================================================
         // Routes
         //================================================ 
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/home');
 
         $stateProvider.state('login', {
             url: '/login',
@@ -43,7 +43,7 @@ app.config([
         });
 
         $stateProvider.state('home', {
-            url: '/',
+            url: '/home',
             templateUrl: 'App/templates/home.html',
             controller: 'homeController',
             resolve: {
@@ -64,7 +64,7 @@ app.config([
         });
 
         $stateProvider.state('publish', {
-            url: '/publish',
+            url: '/user/ads/publish',
             templateUrl: 'App/templates/publish.html',
             controller: 'publishController',
             resolve: {
@@ -80,7 +80,7 @@ app.config([
         });
 
         $stateProvider.state('userAds', {
-            url: '/myAds',
+            url: '/user/ads',
             templateUrl: 'App/templates/userAds.html',
             controller: 'userAdsController',
             resolve: {

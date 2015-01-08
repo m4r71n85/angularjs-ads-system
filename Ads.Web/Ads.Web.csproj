@@ -110,8 +110,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Api\" />
-    <Folder Include="App\factories\" />
-    <Folder Include="App\filters\" />
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
@@ -138,7 +136,11 @@
     <Content Include="App\directives\loginRegisterMenu\loginRegisterMenu.html" />
     <Content Include="App\directives\navigationMenu\navigationMenu.html" />
     <Content Include="App\directives\navigationMenu\navigationMenu.js" />
+    <Content Include="App\filters\adStatuses.js" />
+    <Content Include="App\filters\emptyToDash.js" />
     <Content Include="App\interceptors\authInterceptor.js" />
+    <Content Include="App\modals\deactivateAd\deactivateAd.html" />
+    <Content Include="App\modals\deactivateAd\deactivateAd.js" />
     <Content Include="App\services\adsFiltersHelper.js" />
     <Content Include="App\services\adsService.js" />
     <Content Include="App\services\authenticationService.js" />

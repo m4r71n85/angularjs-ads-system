@@ -7,21 +7,20 @@
         @Styles.Render("~/bundles/css/site")
         @RenderSection("styles", false)
     </head>
-    <body role="document" ng-cloak>
-        <div class="container" role="main">
-            <header-menu></header-menu>
-        </div>
+<body role="document" ng-cloak>
+    <div class="container">
+        <header-menu></header-menu>
+        <section id="main-section">
+            @RenderBody()
+        </section>
+    </div>
+    <footer class="footer">
         <div class="container">
-            <section id="main-section">
-                @RenderBody()
-            </section>
-
-            <footer>
-                footer
-            </footer>
+            <p>&copy; 2015 by Martin Tsekov, No Rights Reserved</p>
         </div>
-            @Scripts.Render("~/bundles/js/lib")
-            @Scripts.Render("~/bundles/js/spa")
-            @RenderSection("scripts", false)
+    </footer>
+    @Scripts.Render("~/bundles/js/lib")
+    @Scripts.Render("~/bundles/js/spa")
+    @RenderSection("scripts", false)
 </body>
 </html>

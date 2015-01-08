@@ -6,14 +6,15 @@ app.factory('adsService', [
     'adsFilterHelper', '$http', '$q', 'toaster', 'apiUrl',
     function (adsFilterHelper, $http, $q, toaster, apiUrl) {
         var settings = adsFilterHelper.getSettings();
+
         var getAds = function () {
             var deferred = $q.defer();
             $http.get(apiUrl + 'api/ads', {
                 params: {
-                    startpage: settings.startPage,
+                    startpage: adsFilterHelper.getPage(),
                     pagesize: settings.pageSize,
-                    categoryid: settings.categoryId,
-                    townid: settings.townId,
+                    categoryid: adsFilterHelper.getCategory(),
+                    townid: adsFilterHelper.getTown(),
                 }
             })
             .success(function (data) {
@@ -27,7 +28,12 @@ app.factory('adsService', [
 
         var getUserAds = function () {
             var deferred = $q.defer();
-            $http.get(apiUrl + 'api/user/ads')
+            $http.get(apiUrl + 'api/user/ads', {
+                params: {
+                    startpage: adsFilterHelper.getPage(),
+                    pagesize: settings.pageSize,
+                }
+            })
             .success(function (data) {
                 deferred.resolve(data);
             })

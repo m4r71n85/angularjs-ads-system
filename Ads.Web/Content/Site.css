@@ -48,3 +48,28 @@ input[type="checkbox"].input-validation-error {
 .margin-top-15{
     margin-top: 15px;
 }
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 30px;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 30px;
+    background-color: #008cba;
+    color: #ffffff;
+}
+footer .container p {
+    margin: 5px 0;
+    font-size: 13px;
+    font-weight: 300;
+}

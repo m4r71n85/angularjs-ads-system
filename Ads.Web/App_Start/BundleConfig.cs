@@ -26,9 +26,9 @@ namespace Ads.Web
                     .IncludeDirectory("~/App/interceptors", "*.js", true)
                     .IncludeDirectory("~/App/directives", "*.js", true)
                     .IncludeDirectory("~/App/services", "*.js", true)
-                    .IncludeDirectory("~/App/factories", "*.js", true)
                     .IncludeDirectory("~/App/controllers", "*.js", true)
-                    .IncludeDirectory("~/App/filters", "*.js", true));
+                    .IncludeDirectory("~/App/filters", "*.js", true)
+                    .IncludeDirectory("~/App/modals", "*.js", true));
 
             bundles.Add(
                new StyleBundle("~/bundles/css/site").Include(

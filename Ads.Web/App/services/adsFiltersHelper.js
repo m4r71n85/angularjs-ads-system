@@ -20,9 +20,17 @@
             settings.startPage = 1;
         }
 
+        var getCategory = function () {
+            return settings.categoryId;
+        }
+
         var setTown = function (townId) {
             settings.townId = townId;
             settings.startPage = 1;
+        }
+
+        var getTown = function () {
+            return settings.townId;
         }
 
         var getSettings = function () {
@@ -33,9 +41,12 @@
 
         return {
             setCategory: setCategory,
+            getCategory: getCategory,
             setTown: setTown,
+            getTown: getTown,
             getPage: getPage,
             setPage: setPage,
-            getSettings: getSettings
+            getSettings: getSettings,
+            resetSettings: resetSettings
         };
     }])
