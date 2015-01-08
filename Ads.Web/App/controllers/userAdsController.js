@@ -1,4 +1,5 @@
-﻿
+﻿'use strict';
+
 app.controller('userAdsController',
 ['ads', 'adsFilterHelper', 'adsService', '$modal', '$state', '$scope', 'itemsPerPage',
     function (ads, adsFilterHelper, adsService, $modal, $state, $scope, itemsPerPage) {
@@ -9,14 +10,14 @@ app.controller('userAdsController',
 
         $scope.loadPage = function () {
             adsFilterHelper.setPage($scope.currentPage);
-            setUserAds();
+            updatePageAds();
         }
 
         $scope.$on('statusSet', function () {
-            setUserAds()
+            updatePageAds()
         });
 
-        function setUserAds() {
+        function updatePageAds() {
             adsService.getUserAds().then(
                 function (data) {
                     $scope.ads = data;
@@ -69,7 +70,7 @@ app.controller('userAdsController',
             }).result.then(function () {
                 adsService.deleteAd(ad.id).then(
                     function () {
-                        delete ad;
+                        updatePageAds();
                     });
             });
         }
