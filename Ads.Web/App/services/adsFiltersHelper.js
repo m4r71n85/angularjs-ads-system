@@ -4,7 +4,7 @@
         var settings = {};
 
         var resetSettings = function () {
-            settings = { startPage: 1, pageSize: itemsPerPage, townId: '', categoryId: '' };
+            settings = { startPage: 1, pageSize: itemsPerPage, townId: '', categoryId: '', status: '' };
         }
 
         var setPage = function (page) {
@@ -33,6 +33,15 @@
             return settings.townId;
         }
 
+        var setStatus = function (status) {
+            settings.status = status;
+            settings.startPage = 1;
+        }
+
+        var getStatus = function () {
+            return settings.status;
+        }
+
         var getSettings = function () {
             return settings;
         }
@@ -46,6 +55,8 @@
             getTown: getTown,
             getPage: getPage,
             setPage: setPage,
+            getStatus: getStatus,
+            setStatus: setStatus,
             getSettings: getSettings,
             resetSettings: resetSettings
         };

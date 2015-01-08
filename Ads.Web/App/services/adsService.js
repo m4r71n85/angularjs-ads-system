@@ -32,6 +32,7 @@ app.factory('adsService', [
                 params: {
                     startpage: adsFilterHelper.getPage(),
                     pagesize: settings.pageSize,
+                    status: adsFilterHeler.getStatus()
                 }
             })
             .success(function (data) {

@@ -3,9 +3,9 @@
 app.controller('userAdsController',
 ['ads', 'adsFilterHelper', 'adsService', '$modal', '$scope', 'itemsPerPage',
     function (ads, adsFilterHelper, adsService, $modal, $scope, itemsPerPage) {
+        adsFilterHelper.resetSettings();
         $scope.itemsPerPage = itemsPerPage;
         $scope.ads = ads;
-        adsFilterHelper.resetSettings()
         $scope.pageSettings = adsFilterHelper.getSettings();
 
         $scope.loadPage = function () {

@@ -1,0 +1,10 @@
+﻿<ul class="nav nav-pills nav-stacked margin-bottom-15" ng-show="$state.includes('userAds')">
+    <li><h4>My Ads</h4></li>
+    <!--!item.authenticated || item.authenticated && isloggedin-->
+    <li ng-repeat="item in userAdsMenuItems"
+        ng-class="{active: item.status == currentStatus}">
+        <a href ng-click="setFilter({{item.filter}})">
+            {{item.title}}
+        </a>
+    </li>
+</ul>
