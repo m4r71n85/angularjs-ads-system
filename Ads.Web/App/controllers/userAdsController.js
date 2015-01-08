@@ -36,7 +36,7 @@ app.controller('userAdsController',
             }).result.then(function () {
                 adsService.deactivateAd(ad.id).then(
                     function () {
-                        ad.status = 'Inactive';
+                        updatePageAds();
                     });
             });
         }
@@ -53,7 +53,7 @@ app.controller('userAdsController',
             }).result.then(function () {
                 adsService.publishAgainAd(ad.id).then(
                     function () {
-                        ad.status = 'WaitingApproval';
+                        updatePageAds();
                     });
             });
         }

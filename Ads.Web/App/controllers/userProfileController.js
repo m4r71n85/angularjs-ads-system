@@ -9,7 +9,13 @@
         }
 
         $scope.updatePassword = function () {
-            userProfileService.updatePassword($scope.userPassword);
+            userProfileService.updatePassword($scope.userPassword).then(
+                function () {
+                    $scope.userPassword = {};
+                },
+                function () {
+                    $scope.userPassword = {};
+                });
         }
     }
 ]);
