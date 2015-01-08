@@ -16,20 +16,16 @@ app.controller('userAdsController',
                 })
         }
 
-        $scope.deactivate = function (id) {
+        $scope.deactivate = function (ads) {
             $modal.open({
-                templateUrl: 'myModalContent.html',
-                controller: 'ModalInstanceCtrl',
-                size: size,
+                templateUrl: '/app/modals/deactivateAd/deactivateAd.html',
+                controller: 'deactivateAdController',
+                //size: size,
                 resolve: {
-                    items: function () {
-                        return $scope.items;
+                    ad: function () {
+                        return ads;
                     }
                 }
-            }).result.then(function (selectedItem) {
-                $scope.selected = selectedItem;
-            }, function () {
-                $log.info('Modal dismissed at: ' + new Date());
             });
         }
 
