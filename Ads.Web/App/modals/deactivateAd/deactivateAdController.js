@@ -6,7 +6,7 @@ app.controller('deactivateAdController',
         $scope.ad = ad;
 
         $scope.ok = function () {
-            $modalInstance.close($scope.selected.item);
+            $modalInstance.close();
         };
 
         $scope.cancel = function () {

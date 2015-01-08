@@ -55,11 +55,23 @@ app.factory('adsService', [
             return deferred.promise;
         }
        
+        var deactivateAd = function (adId) {
+            var deferred = $q.defer();
+            $http.put(apiUrl + 'api/user/ads/deactivate/' + adId)
+            .success(function (data) {
+                deferred.resolve(data);
+            })
+            .error(function (data, status) {
+                deferred.reject(data, status);
+            });
+            return deferred.promise;
+        }
 
         return ({
             getAds: getAds,
             getUserAds: getUserAds,
-            publishAd: publishAd
+            publishAd: publishAd,
+            deactivateAd: deactivateAd
         });
     }
 ])

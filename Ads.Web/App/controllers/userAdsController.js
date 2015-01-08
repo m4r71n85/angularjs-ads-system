@@ -16,16 +16,18 @@ app.controller('userAdsController',
                 })
         }
 
-        $scope.deactivate = function (ads) {
+        $scope.deactivate = function (ad) {
             $modal.open({
                 templateUrl: '/app/modals/deactivateAd/deactivateAd.html',
                 controller: 'deactivateAdController',
-                //size: size,
                 resolve: {
                     ad: function () {
-                        return ads;
+                        return ad;
                     }
                 }
+            }).result.then(function () {
+                adsService.deactivateAd(ad.id);
+                ad.status = 'Inactive';
             });
         }
 
