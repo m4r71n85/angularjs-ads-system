@@ -11,7 +11,7 @@ app.controller('editAdController',
         
 
         $scope.edit = function () {
-            adsService.saveChanges($scope.ad).then(
+            adsService.saveEdit($scope.ad).then(
                 function () {
                     $state.go('userAds')
                 });

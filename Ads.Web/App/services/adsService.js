@@ -80,12 +80,51 @@ app.factory('adsService', [
             return deferred.promise;
         }
 
+        var publishAgainAd = function (adId) {
+            var deferred = $q.defer();
+            $http.put(apiUrl + 'api/user/ads/publishagain/' + adId)
+            .success(function (data) {
+                deferred.resolve(data);
+            })
+            .error(function (data, status) {
+                deferred.reject(data, status);
+            });
+            return deferred.promise;
+        }
+
+        var saveEdit = function (ad) {
+            var deferred = $q.defer();
+            $http.put(apiUrl + 'api/user/ads/' + ad.id, ad)
+            .success(function (data) {
+                deferred.resolve(data);
+            })
+            .error(function (data, status) {
+                deferred.reject(data, status);
+            });
+            return deferred.promise;
+        }
+
+        var deleteAd = function (adId) {
+            var deferred = $q.defer();
+            $http.delete(apiUrl + 'api/user/ads/' + adId)
+            .success(function (data) {
+                deferred.resolve(data);
+            })
+            .error(function (data, status) {
+                deferred.reject(data, status);
+            });
+            return deferred.promise;
+        }
+
         return ({
             getAds: getAds,
             getAd: getAd,
             getUserAds: getUserAds,
             publishAd: publishAd,
-            deactivateAd: deactivateAd
+            deactivateAd: deactivateAd,
+            deleteAd: deleteAd,
+            publishAgainAd: publishAgainAd,
+            saveEdit: saveEdit
         });
     }
 ])

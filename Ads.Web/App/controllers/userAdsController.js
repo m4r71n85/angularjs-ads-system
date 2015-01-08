@@ -1,5 +1,4 @@
-﻿'use strict';
-
+﻿
 app.controller('userAdsController',
 ['ads', 'adsFilterHelper', 'adsService', '$modal', '$state', '$scope', 'itemsPerPage',
     function (ads, adsFilterHelper, adsService, $modal, $state, $scope, itemsPerPage) {
@@ -37,6 +36,40 @@ app.controller('userAdsController',
                 adsService.deactivateAd(ad.id).then(
                     function () {
                         ad.status = 'Inactive';
+                    });
+            });
+        }
+
+        $scope.publishAgain = function (ad) {
+            $modal.open({
+                templateUrl: '/app/modals/publishAgainAd/publishAgainAd.html',
+                controller: 'publishAgainAdController',
+                resolve: {
+                    ad: function () {
+                        return ad;
+                    }
+                }
+            }).result.then(function () {
+                adsService.publishAgainAd(ad.id).then(
+                    function () {
+                        ad.status = 'WaitingApproval';
+                    });
+            });
+        }
+
+        $scope.delete = function (ad) {
+            $modal.open({
+                templateUrl: '/app/modals/deleteAd/deleteAd.html',
+                controller: 'deleteAdController',
+                resolve: {
+                    ad: function () {
+                        return ad;
+                    }
+                }
+            }).result.then(function () {
+                adsService.deleteAd(ad.id).then(
+                    function () {
+                        delete ad;
                     });
             });
         }

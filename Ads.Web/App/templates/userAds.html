@@ -28,14 +28,14 @@
                     <div class="well col-sm-12" ng-bind="ad.status|adStatus"></div>
                     <button ng-click="deactivate(ad)" ng-show="isPublishedOrWaiting(ad.status)" class="btn btn-info btn-block">Deactivate</button>
                     <button ng-click="edit(ad.id)" ng-show="!isPublishedOrWaiting(ad.status)" class="btn btn-info btn-block">Edit</button>
-                    <button ng-click="publishAgain(ad.id)" ng-show="!isPublishedOrWaiting(ad.status)" class="btn btn-info btn-block">Publish Again</button>
+                    <button ng-click="publishAgain(ad)" ng-show="!isPublishedOrWaiting(ad.status)" class="btn btn-info btn-block">Publish Again</button>
                     <button ng-click="delete(ad)" ng-show="!isPublishedOrWaiting(ad.status)" class="btn btn-info btn-block">Delete</button>
                 </div>
             </div>
         </div>
     </div>
     <div class="well margin-top-15" ng-show="!ads.numItems">
-        Sorry, we don't have any advertisement matching these criterias...
+        Sorry, there are no advertisements matching these criterias...
     </div>
     <!--    Pagination-->
     <div class="row text-center" ng-show="ads.numItems > itemsPerPage">
