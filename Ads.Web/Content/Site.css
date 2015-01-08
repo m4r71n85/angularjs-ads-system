@@ -73,3 +73,9 @@ footer .container p {
     font-size: 13px;
     font-weight: 300;
 }
+h3.panel-title{
+    padding: 0 15px;
+}
+.panel-image{
+    padding-left: 0;
+}

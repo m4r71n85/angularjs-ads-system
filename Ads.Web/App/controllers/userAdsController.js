@@ -26,8 +26,10 @@ app.controller('userAdsController',
                     }
                 }
             }).result.then(function () {
-                adsService.deactivateAd(ad.id);
-                ad.status = 'Inactive';
+                adsService.deactivateAd(ad.id).then(
+                    function () {
+                        ad.status = 'Inactive';
+                    });
             });
         }
 
