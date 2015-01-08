@@ -30,26 +30,6 @@ app.config([
         //================================================ 
         $urlRouterProvider.otherwise('/');
 
-        $stateProvider.state('home', {
-            url: '/',
-            templateUrl: 'App/templates/home.html',
-            controller: 'homeController',
-            resolve: {
-                allCategories: [
-                    'menuItemsServices', function (menuItemsServices) {
-                        return menuItemsServices.getAllCategories();
-                }],
-                allTowns: [
-                    'menuItemsServices', function (menuItemsServices) {
-                        return menuItemsServices.getAllTowns();
-                }],
-                ads: [
-                    'adsService', function (adsService) {
-                        return adsService.getAds();
-                    }
-                ]
-            },
-        });
         $stateProvider.state('login', {
             url: '/login',
             templateUrl: 'App/templates/login.html',
@@ -60,6 +40,43 @@ app.config([
             url: '/register',
             templateUrl: 'App/templates/register.html',
             controller: 'registerController'
+        });
+
+        $stateProvider.state('home', {
+            url: '/',
+            templateUrl: 'App/templates/home.html',
+            controller: 'homeController',
+            resolve: {
+                allCategories: [
+                    'menuItemsServices', function (menuItemsServices) {
+                        return menuItemsServices.getAllCategories();
+                    }],
+                allTowns: [
+                    'menuItemsServices', function (menuItemsServices) {
+                        return menuItemsServices.getAllTowns();
+                    }],
+                ads: [
+                    'adsService', function (adsService) {
+                        return adsService.getAds();
+                    }
+                ]
+            },
+        });
+
+        $stateProvider.state('publish', {
+            url: '/publish',
+            templateUrl: 'App/templates/publish.html',
+            controller: 'publishController',
+            resolve: {
+                allCategories: [
+                    'menuItemsServices', function (menuItemsServices) {
+                        return menuItemsServices.getAllCategories();
+                    }],
+                allTowns: [
+                    'menuItemsServices', function (menuItemsServices) {
+                        return menuItemsServices.getAllTowns();
+                    }],
+            }
         });
     }
 ]);

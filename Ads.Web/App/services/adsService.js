@@ -3,15 +3,9 @@
 'use strict';
 
 app.factory('adsService', [
-    'itemsPerPage', '$http', '$q', 'toaster', 'apiUrl',
-    function (itemsPerPage, $http, $q, toaster, apiUrl) {
-
-        var settings = {};
-
-        var resetSettings = function () {
-            settings = { startPage: 1, pageSize: itemsPerPage, townId: '', categoryId: '' };
-        }
-        
+    'adsFilterHelper', '$http', '$q', 'toaster', 'apiUrl',
+    function (adsFilterHelper, $http, $q, toaster, apiUrl) {
+        var settings = adsFilterHelper.getSettings();
         var getAds = function () {
             var deferred = $q.defer();
             $http.get(apiUrl + 'api/ads', {
@@ -43,38 +37,22 @@ app.factory('adsService', [
             return deferred.promise;
         }
 
-        var setPage = function (page) {
-            settings.startPage = page;
+        var publishAd = function (ad) {
+            var deferred = $q.defer();
+            $http.post(apiUrl + 'api/user/ads', ad)
+            .success(function (data) {
+                deferred.resolve(data);
+            })
+            .error(function (data, status) {
+                deferred.reject(data, status);
+            });
+            return deferred.promise;
         }
-
-        var getPage = function (page) {
-            return settings.startPage;
-        }
-
-        var setCategory = function (categoryId) {
-            settings.categoryId = categoryId;
-            settings.startPage = 1;
-        }
-
-        var setTown = function (townId) {
-            settings.townId = townId;
-            settings.startPage = 1;
-        }
-
-        var getSettings = function () {
-            return settings;
-        }
-
-        resetSettings();
+       
 
         return ({
             getAds: getAds,
-            getUserAds: getUserAds,
-            setCategory: setCategory,
-            setTown: setTown,
-            getPage: getPage,
-            setPage: setPage,
-            getSettings: getSettings
+            publishAd: publishAd
         });
     }
 ])

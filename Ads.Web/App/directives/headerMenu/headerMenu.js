@@ -24,6 +24,7 @@
                     }
 
                     $scope.isLoggedIn = authSessionHelper.isLoggedIn();
+                    $scope.username = authSessionHelper.getUsername()
 
                     $scope.$on('authState', function () {
                         $scope.isLoggedIn = authSessionHelper.isLoggedIn();

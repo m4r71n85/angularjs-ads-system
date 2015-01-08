@@ -1,16 +1,16 @@
 ﻿'use strict';
 
 app.controller('homeController',
-['ads', 'allCategories', 'allTowns', 'adsService', 'authSessionHelper', '$scope', 'itemsPerPage',
-    function (ads, allCategories, allTowns, adsService, authSessionHelper, $scope, itemsPerPage) {
+['ads', 'allCategories', 'allTowns', 'adsFilterHelper', 'adsService', 'authSessionHelper', '$scope', 'itemsPerPage',
+    function (ads, allCategories, allTowns, adsFilterHelper, adsService, authSessionHelper, $scope, itemsPerPage) {
         $scope.itemsPerPage = itemsPerPage;
         $scope.allCategories = allCategories;
         $scope.allTowns = allTowns;
         $scope.ads = ads;
-        $scope.pageSettings = adsService.getSettings();
-
+        $scope.pageSettings = adsFilterHelper.getSettings();
+        
         $scope.loadPage = function () {
-            adsService.setPage($scope.currentPage);
+            adsFilterHelper.setPage($scope.currentPage);
             adsService.getAds().then(
                 function (data) {
                     $scope.ads = data;
@@ -18,7 +18,7 @@ app.controller('homeController',
         }
 
         $scope.filterCategory = function (categoryId) {
-            adsService.setCategory(categoryId);
+            adsFilterHelper.setCategory(categoryId);
             adsService.getAds().then(
                 function (data) {
                     $scope.ads = data;
@@ -26,7 +26,7 @@ app.controller('homeController',
         }
 
         $scope.filterTown = function (townId) {
-            adsService.setTown(townId);
+            adsFilterHelper.setTown(townId);
             adsService.getAds().then(
                 function (data) {
                     $scope.ads = data;
