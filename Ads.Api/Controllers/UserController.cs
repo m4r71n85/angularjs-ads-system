@@ -486,7 +486,7 @@
                 return this.BadRequest("Edit profile for user 'admin' is not allowed!");
             }
 
-            var hasEmailTaken = this.Data.Users.All().Any(x => x.Email == model.Email);
+            var hasEmailTaken = this.Data.Users.All().Where(x => x.Id != currentUserId).Any(x => x.Email == model.Email);
             if (hasEmailTaken)
             {
                 return this.BadRequest("Invalid email. The email is already taken!");
