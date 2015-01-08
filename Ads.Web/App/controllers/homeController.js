@@ -7,6 +7,7 @@ app.controller('homeController',
         $scope.allCategories = allCategories;
         $scope.allTowns = allTowns;
         $scope.ads = ads;
+        adsFilterHelper.resetSettings()
         $scope.pageSettings = adsFilterHelper.getSettings();
         
         $scope.loadPage = function () {
@@ -16,26 +17,5 @@ app.controller('homeController',
                     $scope.ads = data;
                 })
         }
-
-        $scope.filterCategory = function (categoryId) {
-            adsFilterHelper.setCategory(categoryId);
-            adsService.getAds().then(
-                function (data) {
-                    $scope.ads = data;
-                });
-        }
-
-        $scope.filterTown = function (townId) {
-            adsFilterHelper.setTown(townId);
-            adsService.getAds().then(
-                function (data) {
-                    $scope.ads = data;
-                })
-        }
-
-        $scope.isLoggedIn = authSessionHelper.isLoggedIn();
-        $scope.$on('authState', function () {
-            $scope.isLoggedIn = authSessionHelper.isLoggedIn();
-        });
     }
 ]);

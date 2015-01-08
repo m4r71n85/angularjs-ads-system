@@ -52,6 +52,7 @@ app.factory('adsService', [
 
         return ({
             getAds: getAds,
+            getUserAds: getUserAds,
             publishAd: publishAd
         });
     }

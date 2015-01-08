@@ -12,7 +12,7 @@ app.directive('navigationMenu',
 
                 $scope.navigationMenuItems = [
                     { title: "Home", sref: "home" },
-                    { title: "My Ads", sref: "#", authenticated: true },
+                    { title: "My Ads", sref: "userAds", authenticated: true },
                     { title: "Publish New Ad", sref: "publish", authenticated: true },
                     { title: "Edit Profile", sref: "#", authenticated: true}
                 ];

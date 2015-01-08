@@ -78,6 +78,18 @@ app.config([
                     }],
             }
         });
+
+        $stateProvider.state('userAds', {
+            url: '/myAds',
+            templateUrl: 'App/templates/userAds.html',
+            controller: 'userAdsController',
+            resolve: {
+                ads: [
+                    'adsService', function (adsService) {
+                        return adsService.getUserAds();
+                    }]
+            }
+        })
     }
 ]);
 
