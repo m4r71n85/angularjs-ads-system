@@ -34,7 +34,7 @@ app.controller('adminHomeController',
             });
         }
 
-        $scope.approve = function (ad) {
+        $scope.reject = function (ad) {
             $modal.open({
                 templateUrl: '/app/modals/adminRejectAd/adminRejectAd.html',
                 controller: 'adminRejectAdController',
@@ -45,6 +45,23 @@ app.controller('adminHomeController',
                 }
             }).result.then(function () {
                 adminAdsService.rejectAd(ad.id).then(
+                    function () {
+                        updatePageAds();
+                    });
+            });
+        }
+
+        $scope.delete = function (ad) {
+            $modal.open({
+                templateUrl: '/app/modals/adminDeleteAd/adminDeleteAd.html',
+                controller: 'adminDeleteAdController',
+                resolve: {
+                    ad: function () {
+                        return ad;
+                    }
+                }
+            }).result.then(function () {
+                adminAdsService.deleteAd(ad.id).then(
                     function () {
                         updatePageAds();
                     });

@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-app.controller('adminRejectAdController',
+app.controller('adminDeleteAdController',
     ['$scope', '$modalInstance', 'ad', function ($scope, $modalInstance, ad) {
 
         $scope.ad = ad;

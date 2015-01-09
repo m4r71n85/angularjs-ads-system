@@ -44,7 +44,7 @@ app.factory('adminAdsService', [
             var deferred = $q.defer();
             $http.put(apiUrl + 'api/admin/ads/reject/' + adId)
             .success(function (data) {
-                toaster.pop('success', '', "Advertisement rejeceted.");
+                toaster.pop('success', '', "Advertisement rejected.");
                 deferred.resolve(data);
             })
             .error(function (data, status) {
@@ -53,6 +53,18 @@ app.factory('adminAdsService', [
             return deferred.promise;
         }
 
+        var deleteAd = function (adId) {
+            var deferred = $q.defer();
+            $http.delete(apiUrl + 'api/admin/ads/' + adId)
+            .success(function (data) {
+                toaster.pop('success', '', "Advertisement deleted.");
+                deferred.resolve(data);
+            })
+            .error(function (data, status) {
+                deferred.reject(data, status);
+            });
+            return deferred.promise;
+        }
         var getAd = function (adId) {
             var deferred = $q.defer();
             $http.get(apiUrl + 'api/user/ads/' + adId)
@@ -117,22 +129,10 @@ app.factory('adminAdsService', [
             return deferred.promise;
         }
 
-        var deleteAd = function (adId) {
-            var deferred = $q.defer();
-            $http.delete(apiUrl + 'api/user/ads/' + adId)
-            .success(function (data) {
-                toaster.pop('success', '', "Advertisement deleted.");
-                deferred.resolve(data);
-            })
-            .error(function (data, status) {
-                deferred.reject(data, status);
-            });
-            return deferred.promise;
-        }
-
         return ({
             getAds: getAds,
             approveAd: approveAd,
+            rejectAd: rejectAd,
             getAd: getAd,
             publishAd: publishAd,
             deactivateAd: deactivateAd,
