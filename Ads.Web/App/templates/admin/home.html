@@ -45,10 +45,10 @@
                 </div>
                 <div class="col-xs-12  border-top padding-top-15">
                     <div class="col-md-3">
-                        <button ng-click="approve(ad)" class="btn btn-info btn-block">Approve</button>
+                        <button ng-click="approve(ad)" ng-show="ad.status=='WaitingApproval' || ad.status=='Rejected'" class="btn btn-info btn-block">Approve</button>
                     </div>
                     <div class="col-md-3">
-                        <button ng-click="reject(ad)" class="btn btn-info btn-block">Reject</button>
+                        <button ng-click="reject(ad)" ng-show="ad.status=='WaitingApproval' || ad.status=='Published'" class="btn btn-info btn-block">Reject</button>
                     </div>
                     <div class="col-md-3">
                         <button ng-click="edit(ad.id)" class="btn btn-info btn-block">Edit</button>

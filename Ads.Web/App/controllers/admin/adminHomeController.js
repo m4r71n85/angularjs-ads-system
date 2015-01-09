@@ -34,6 +34,22 @@ app.controller('adminHomeController',
             });
         }
 
+        $scope.approve = function (ad) {
+            $modal.open({
+                templateUrl: '/app/modals/adminRejectAd/adminRejectAd.html',
+                controller: 'adminRejectAdController',
+                resolve: {
+                    ad: function () {
+                        return ad;
+                    }
+                }
+            }).result.then(function () {
+                adminAdsService.rejectAd(ad.id).then(
+                    function () {
+                        updatePageAds();
+                    });
+            });
+        }
 
         $scope.loadPage = function () {
             adsFilterHelper.setPage($scope.currentPage);

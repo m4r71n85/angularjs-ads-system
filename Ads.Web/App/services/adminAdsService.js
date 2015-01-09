@@ -40,6 +40,19 @@ app.factory('adminAdsService', [
             return deferred.promise;
         }
 
+        var rejectAd = function (adId) {
+            var deferred = $q.defer();
+            $http.put(apiUrl + 'api/admin/ads/reject/' + adId)
+            .success(function (data) {
+                toaster.pop('success', '', "Advertisement rejeceted.");
+                deferred.resolve(data);
+            })
+            .error(function (data, status) {
+                deferred.reject(data, status);
+            });
+            return deferred.promise;
+        }
+
         var getAd = function (adId) {
             var deferred = $q.defer();
             $http.get(apiUrl + 'api/user/ads/' + adId)

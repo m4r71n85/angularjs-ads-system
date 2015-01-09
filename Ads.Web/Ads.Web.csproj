@@ -145,6 +145,8 @@
     <Content Include="App\interceptors\authInterceptor.js" />
     <Content Include="App\modals\adminApproveAd\adminApproveAd.html" />
     <Content Include="App\modals\adminApproveAd\adminApproveAdController.js" />
+    <Content Include="App\modals\adminRejectAd\adminRejectAd.html" />
+    <Content Include="App\modals\adminRejectAd\adminRejectAdController.js" />
     <Content Include="App\modals\deactivateAd\deactivateAd.html" />
     <Content Include="App\modals\deleteAd\deleteAd.html" />
     <Content Include="App\modals\deleteAd\deleteAdController.js" />
