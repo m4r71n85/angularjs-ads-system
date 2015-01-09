@@ -1,33 +1,31 @@
-﻿<form>
-    <fieldset>
-        <!-- Form Name -->
-        <legend>Login</legend>
-        <div class="col-xs-12">
-
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="control-label" for="username">Username</label>
-                <input ng-model="user.username" id="username" name="username" placeholder="Username" class="form-control input-md" ng-required="true" type="text">
+﻿<div class="col-sm-6">
+    <form name="loginForm">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Login</h3>
             </div>
+            <div class="panel-body">
+                <!-- Username input-->
+                <div class="form-group">
+                    <label class="control-label" for="username">Username: </label>
+                    <input ng-model="user.username" id="username" name="username" placeholder="Username" class="form-control input-md" ng-required="true" type="text" />
+                </div>
 
-            <!-- Password input-->
-            <div class="form-group">
-                <label class="control-label" for="password">Password</label>
-                <input ng-model="user.password" id="password" name="password" placeholder="Password" class="form-control input-md" ng-required="true" type="password">
-            </div>
+                <!-- Password input-->
+                <div class="form-group">
+                    <label class="control-label" for="password">Password</label>
+                    <input ng-model="user.password" id="password" name="password" placeholder="Password" class="form-control input-md" ng-required="true" type="password" />
+                </div>
 
-            <!-- Button -->
-            <div class="form-group">
-                <label class="control-label" for="login"></label>
-                <div class="row">
-                    <div class="col-md-4">
-                        <button ng-click="login()" id="login" name="login" class="btn btn-primary">Login</button>
-                        <div class="pull-right">
-                            <a ui-sref="register" class="btn btn-default">Register here</a>
-                        </div>
+
+                <!-- Button -->
+                <div class="form-group">
+                    <button ng-click="loginForm.$valid && login()" id="login" name="login" class="btn btn-primary">Login</button>
+                    <div class="pull-right">
+                        <a ui-sref="register" class="btn btn-default">Register here</a>
                     </div>
                 </div>
             </div>
         </div>
-</fieldset>
-</form>
+    </form>
+</div>

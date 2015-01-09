@@ -1,10 +1,10 @@
 ﻿'use strict';
 
 app.controller('registerController',
-['authenticationService', '$state', '$scope',
-    function (authenticationService, $state, $scope) {
+['allTowns', 'authenticationService', '$state', '$scope',
+    function (allTowns, authenticationService, $state, $scope) {
         
-
+        $scope.allTowns = allTowns;
         $scope.register = function () {
             authenticationService.register($scope.user).then(
                 function () {

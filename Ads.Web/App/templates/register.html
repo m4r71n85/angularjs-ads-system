@@ -1,61 +1,72 @@
-﻿<form>
-    <fieldset>
-        <!-- Username -->
-        <legend>User Registration</legend>
-        <div class="col-xs-4">
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="control-label" for="username">Username</label>
-                <input ng-model="user.username" placeholder="Username" class="form-control input-md" id="username" ng-required="true" type="text">
+﻿<div class="col-sm-12">
+    <form name="registerForm">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">User Registration</h3>
             </div>
+            <div class="panel-body">
+                <div class="col-sm-6">
+                    <!-- Username input-->
+                    <div class="form-group">
+                        <label class="control-label" for="username">Username:</label>
+                        <input ng-model="user.username" placeholder="Username" class="form-control input-md" id="username" ng-required="true" type="text">
+                    </div>
 
-            <!-- Password -->
-            <div class="form-group">
-                <label class="control-label" for="password">Password</label>
-                <input ng-model="user.password" placeholder ="Password" class="form-control input-md" id="password" ng-required="true" type="password">
-            </div>
+                    <!-- Password input-->
+                    <div class="form-group">
+                        <label class="control-label" for="password">Password:</label>
+                        <input ng-model="user.password" placeholder="Password" class="form-control input-md" id="password" ng-required="true" type="password" />
+                    </div>
 
-            <!-- Name -->
-            <div class="form-group">
-                <label class="control-label" for="name">Name</label>
-                <input ng-model="user.name" placeholder="Name" class="form-control input-md" id="name" ng-required="true" type="text">
-            </div>
+                    <!-- Confirm Password input-->
+                    <div class="form-group">
+                        <label class="control-label" for="confirm-password">Confirm Password:</label>
+                        <input ng-model="user.confirmPassword" placeholder="Confirm Password" class="form-control input-md" id="confirm-password" ng-required="true" type="password" />
+                    </div>
 
-            <!-- Phone -->
-            <div class="form-group">
-                <label class="control-label" for="phone">Phone</label>
-                <input ng-model="user.phone" placeholder="Phone" class="form-control input-md" id="phone" ng-required="true" type="text">
+                    <!-- Email input-->
+                    <div class="form-group">
+                        <label class="control-label" for="email">Email:</label>
+                        <input ng-model="user.email" placeholder="Email" class="form-control input-md" id="email" ng-required="true" type="email" />
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+
+                    <!-- Name input-->
+                    <div class="form-group">
+                        <label class="control-label" for="name">Name:</label>
+                        <input ng-model="user.name" placeholder="Name" class="form-control input-md" id="name" ng-required="true" type="text" />
+                    </div>
+
+                    <!-- Phone input-->
+                    <div class="form-group">
+                        <label class="control-label" for="phone">Phone:</label>
+                        <input ng-model="user.phone" placeholder="Phone" class="form-control input-md" id="phone" ng-required="true" type="text" />
+                    </div>
+
+                    <!-- Town select-->
+                    <div class="form-group">
+                        <label class="control-label" for="category">Town:</label>
+                        <select id="category" name="town" class="form-control"
+                                ng-options="town.id as town.name for town in allTowns"
+                                ng-model="user.townId">
+                            <option value="">Choose Town...</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+                <!-- Button -->
+                <div class="row">
+                    <div class="col-sm-2 text-center">
+                        <button ng-click="registerForm.$valid && register()" class="btn btn-primary">Register</button>
+                    </div>
+                    <div class="col-sm-6 text-center">
+                        <a ui-sref="login" class="btn btn-default">Login here</a>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="col-xs-6">
-            <div class="form-group">
-                <label class="control-label" for="email">Email</label>
-                <input ng-model="user.email" placeholder="Email" class="form-control input-md" id="email" ng-required="true" type="text">
-            </div>
-
-            <!-- Password -->
-            <div class="form-group">
-                <label class="control-label" for="confirm-password">Confirm Password</label>
-                <input ng-model="user.confirmPassword" placeholder="Confirm Password" class="form-control input-md" id="confirm-password" ng-required="true" type="password">
-            </div>
-
-            <!-- Name -->
-            <div class="form-group">
-                <label class="control-label" for="town">Town</label>
-                <select ng-model="user.townId" class="form-control input-md" id="town" ng-required="true">
-                    <option>1</option>
-                    <option>2</option>
-                </select>
-            </div>
-        </div>
-    </fieldset>
-    <div class="row">
-        <div class="col-xs-4 text-center">
-            <button ng-click="register()" class="btn btn-primary">Register</button>
-        </div>
-        <div class="col-xs-4 text-center">
-            <a ui-sref="login" class="btn btn-default">Login here</a>
-        </div>
-    </div>
-</form>
+    </form>
+</div>

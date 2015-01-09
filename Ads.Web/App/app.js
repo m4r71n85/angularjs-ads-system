@@ -31,18 +31,27 @@ app.config([
         $urlRouterProvider.otherwise('/home');
 
         $stateProvider.state('login', {
+            title: 'Login',
             url: '/login',
             templateUrl: 'App/templates/login.html',
             controller: 'loginController'
         });
 
         $stateProvider.state('register', {
+            title: 'Register',
             url: '/register',
             templateUrl: 'App/templates/register.html',
-            controller: 'registerController'
+            controller: 'registerController',
+            resolve: {
+                allTowns: [
+                    'menuItemsServices', function (menuItemsServices) {
+                        return menuItemsServices.getAllTowns();
+                    }],
+            }
         });
 
         $stateProvider.state('home', {
+            title: 'Home',
             url: '/home',
             templateUrl: 'App/templates/home.html',
             controller: 'homeController',
@@ -64,6 +73,7 @@ app.config([
         });
 
         $stateProvider.state('publish', {
+            title: 'Publish Advertisement',
             url: '/user/ads/publish',
             templateUrl: 'App/templates/publishAd.html',
             controller: 'publishAdController',
@@ -80,6 +90,7 @@ app.config([
         });
 
         $stateProvider.state('editAd', {
+            title: 'Edit Advertisement',
             url: '/user/ads/edit/{adId}',
             templateUrl: 'App/templates/editAd.html',
             controller: 'editAdController',
@@ -101,6 +112,7 @@ app.config([
         });
 
         $stateProvider.state('userAds', {
+            title: 'My Advertisement',
             url: '/user/ads',
             templateUrl: 'App/templates/userAds.html',
             controller: 'userAdsController',
@@ -113,6 +125,7 @@ app.config([
         })
 
         $stateProvider.state('userProfile', {
+            title: 'Edit Profile',
             url: '/user/profile',
             templateUrl: 'App/templates/userProfile.html',
             controller: 'userProfileController',
@@ -132,9 +145,12 @@ app.config([
 
 //================================================
 // Reset filters on state change
+// Set page title
 //================================================ 
 app.run(['$rootScope', 'adsFilterHelper', function ($rootScope, adsFilterHelper) {
-    $rootScope.$on("$stateChangeSuccess ", function (event, toState, toParams) {
+    $rootScope.$on("$stateChangeSuccess", function (event, toState, toParams) {
         adsFilterHelper.resetSettings();
+        $rootScope.title = $rootScope.$state.current.title;
+        console.log($rootScope);
     });
 }]);
