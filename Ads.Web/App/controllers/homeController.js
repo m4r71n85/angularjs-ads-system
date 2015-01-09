@@ -8,7 +8,7 @@ app.controller('homeController',
         $scope.allTowns = allTowns;
         $scope.ads = ads;
         $scope.pageSettings = adsFilterHelper.getSettings();
-        
+
         $scope.loadPage = function () {
             adsFilterHelper.setPage($scope.currentPage);
             adsService.getAds().then(

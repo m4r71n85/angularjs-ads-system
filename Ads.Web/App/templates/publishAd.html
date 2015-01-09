@@ -8,13 +8,13 @@
                 <div class="col-sm-6">
                     <!-- Title input-->
                     <div class="form-group">
-                        <label class="control-label" for="title">Title: </label>
+                        <label class="control-label" for="title">Title: <span class="text-danger">*</span></label>
                         <input ng-model="ad.title" id="title" name="title" placeholder="Title" class="form-control input-md" ng-required="true" type="text">
                     </div>
 
                     <!-- Text input-->
                     <div class="form-group">
-                        <label class="control-label" for="text">Text: </label>
+                        <label class="control-label" for="text">Text: <span class="text-danger">*</span></label>
                         <textarea ng-model="ad.text" id="text" name="text" placeholder="Text" class="form-control" ng-required="true"></textarea>
                     </div>
 
@@ -46,6 +46,7 @@
                         <input type="file" id="image" name="image" placeholder="Image" class="form-control input-md"
                                ng-model="ad.image"
                                onchange="angular.element(this).scope().fileSelected(this)" />
+                        <span class="text-danger" ng-show="fileTypeError">File type not supported!</span>
                     </div>
                 </div>
             </div>

@@ -27,7 +27,9 @@ app.controller('editAdController',
         
         $scope.fileSelected = function (fileInputField) {
             delete $scope.ad.imageDataUrl;
-            $scope.fileTypeError = false;
+            $scope.$apply(function () {
+                $scope.fileTypeError = false;
+            });
             var file = fileInputField.files[0];
             if (file.type.match(/image\/.*/)) {
                 var reader = new FileReader();

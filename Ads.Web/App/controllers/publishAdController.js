@@ -17,6 +17,9 @@ app.controller('publishAdController',
 
         $scope.fileSelected = function (fileInputField) {
             delete $scope.ad.imageDataUrl;
+            $scope.$apply(function () {
+                $scope.fileTypeError = false;
+            });
             var file = fileInputField.files[0];
             if (file.type.match(/image\/.*/)) {
                 var reader = new FileReader();
@@ -26,7 +29,9 @@ app.controller('publishAdController',
                 };
                 reader.readAsDataURL(file);
             } else {
-                $(".image-box").html("<p>File type not supported!</p>");
+                $scope.$apply(function () {
+                    $scope.fileTypeError = true;
+                });
             }
         };
 

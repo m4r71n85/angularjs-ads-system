@@ -1,18 +1,22 @@
 ﻿'use strict';
 
 app.factory('authenticationService', [
-    '$http', '$q', '$rootScope', 'toaster', 'authSessionHelper', 'apiUrl',
-    function ($http, $q, $rootScope, toaster, authSessionHelper, apiUrl) {
+    '$http', '$q', '$rootScope', 'modelStateErrorsService', 'toaster', 'authSessionHelper', 'apiUrl',
+    function ($http, $q, $rootScope, modelStateErrorsService, toaster, authSessionHelper, apiUrl) {
 
         var register = function(user) {
             var deferred = $q.defer();
             $http.post(apiUrl + 'api/user/register', user)
                 .success(function (data) {
                     authSessionHelper.setSession(data);
+                    toaster.pop('success', '', 'User account created.');
                     deferred.resolve(data);
                 })
                 .error(function (data, status) {
-                    console.log("error!");
+                    var errors = modelStateErrorsService.parseErrors(data);
+                    angular.forEach(errors, function (error, key) {
+                        toaster.pop('error', '', error);
+                    });
                     deferred.reject(data, status);
                 });
             return deferred.promise;
@@ -26,7 +30,7 @@ app.factory('authenticationService', [
                     deferred.resolve(data);
                 })
                 .error(function (data, status) {
-                    console.log("error!");
+                    toaster.pop('error', "", data.error_description);
                     deferred.reject(data, status);
                 });
             return deferred.promise;

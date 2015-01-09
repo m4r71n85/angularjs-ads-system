@@ -7,19 +7,19 @@
             <div class="panel-body">
                 <!-- Name input-->
                 <div class="form-group">
-                    <label class="control-label" for="name">Name: </label>
+                    <label class="control-label" for="name">Name: <span class="text-danger">*</span></label>
                     <input ng-model="user.name" id="name" name="name" placeholder="Name" class="form-control input-md" ng-required="true" type="text" />
                 </div>
 
                 <!-- Text input-->
                 <div class="form-group">
-                    <label class="control-label" for="text">Email: </label>
+                    <label class="control-label" for="text">Email: <span class="text-danger">*</span></label>
                     <input ng-model="user.email" id="email" name="email" placeholder="Email" class="form-control input-md" ng-required="true" type="email" />
                 </div>
 
                 <!-- Phone input-->
                 <div class="form-group">
-                    <label class="control-label" for="text">Phone: </label>
+                    <label class="control-label" for="text">Phone: <span class="text-danger">*</span></label>
                     <input ng-model="user.phoneNumber" id="email" name="phone" placeholder="Phone" class="form-control input-md" ng-required="true" type="text" />
                 </div>
 
@@ -54,19 +54,19 @@
             <div class="panel-body">
                 <!-- Old password input-->
                 <div class="form-group">
-                    <label class="control-label" for="oldPassword">Old Password: </label>
+                    <label class="control-label" for="oldPassword">Old Password: <span class="text-danger">*</span></label>
                     <input ng-model="userPassword.oldPassword" id="oldPassword" name="oldPassword" placeholder="Old Password" class="form-control input-md" ng-required="true" type="password" />
                 </div>
 
                 <!-- New password input-->
                 <div class="form-group">
-                    <label class="control-label" for="newPassword">New Password: </label>
+                    <label class="control-label" for="newPassword">New Password: <span class="text-danger">*</span></label>
                     <input ng-model="userPassword.newPassword" id="newPassword" name="newPassword" placeholder="New Password" class="form-control input-md" ng-required="true" type="password" />
                 </div>
 
                 <!-- Confirm password input-->
                 <div class="form-group">
-                    <label class="control-label" for="confirmPassword">Confirm Password: </label>
+                    <label class="control-label" for="confirmPassword">Confirm Password: <span class="text-danger">*</span></label>
                     <input ng-model="userPassword.confirmPassword" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" class="form-control input-md" ng-required="true" type="password" />
                 </div>
 

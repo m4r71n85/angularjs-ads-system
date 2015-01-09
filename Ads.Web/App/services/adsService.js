@@ -61,6 +61,7 @@ app.factory('adsService', [
             $http.post(apiUrl + 'api/user/ads', ad)
             .success(function (data) {
                 deferred.resolve(data);
+                toaster.pop('success', '', "Advertisement submitted for approval. Once approved, it will be published.");
             })
             .error(function (data, status) {
                 deferred.reject(data, status);
@@ -72,6 +73,7 @@ app.factory('adsService', [
             var deferred = $q.defer();
             $http.put(apiUrl + 'api/user/ads/deactivate/' + adId)
             .success(function (data) {
+                toaster.pop('success', '', "Advertisement deactivated.");
                 deferred.resolve(data);
             })
             .error(function (data, status) {
@@ -84,6 +86,7 @@ app.factory('adsService', [
             var deferred = $q.defer();
             $http.put(apiUrl + 'api/user/ads/publishagain/' + adId)
             .success(function (data) {
+                toaster.pop('success', '', "Advertisement submitted for approval. Once approved, it will be published.");
                 deferred.resolve(data);
             })
             .error(function (data, status) {
@@ -96,6 +99,7 @@ app.factory('adsService', [
             var deferred = $q.defer();
             $http.put(apiUrl + 'api/user/ads/' + ad.id, ad)
             .success(function (data) {
+                toaster.pop('success', '', "Advertisement edited. Don't forget to submit it for publishing.");
                 deferred.resolve(data);
             })
             .error(function (data, status) {
@@ -108,6 +112,7 @@ app.factory('adsService', [
             var deferred = $q.defer();
             $http.delete(apiUrl + 'api/user/ads/' + adId)
             .success(function (data) {
+                toaster.pop('success', '', "Advertisement deleted.");
                 deferred.resolve(data);
             })
             .error(function (data, status) {

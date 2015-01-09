@@ -3,8 +3,8 @@
 'use strict';
 
 app.factory('userProfileService', [
-    '$http', '$q', 'toaster', 'apiUrl',
-    function ($http, $q, toaster, apiUrl) {
+    '$http', '$q', 'modelStateErrorsService', 'toaster', 'apiUrl',
+    function ($http, $q, modelStateErrorsService, toaster, apiUrl) {
 
         var get = function () {
             var deferred = $q.defer();
@@ -22,9 +22,14 @@ app.factory('userProfileService', [
             var deferred = $q.defer();
             $http.put(apiUrl + 'api/user/changepassword', passwords)
             .success(function (data) {
+                toaster.pop('success', '', "User profile successfully updated.");
                 deferred.resolve(data);
             })
             .error(function (data, status) {
+                var errors = modelStateErrorsService.parseErrors(data);
+                angular.forEach(errors, function (error, key) {
+                    toaster.pop('error', '', error);
+                });
                 deferred.reject(data, status);
             });
             return deferred.promise;
@@ -34,9 +39,11 @@ app.factory('userProfileService', [
             var deferred = $q.defer();
             $http.put(apiUrl + 'api/user/profile', user)
             .success(function (data) {
+                toaster.pop('success', '', "User profile successfully updated.");
                 deferred.resolve(data);
             })
             .error(function (data, status) {
+                toaster.pop('error', '', data.message);
                 deferred.reject(data, status);
             });
             return deferred.promise;
