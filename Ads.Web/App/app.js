@@ -140,6 +140,28 @@ app.config([
                     }],
             }
         })
+
+        $stateProvider.state('adminHome', {
+            title: 'Admin Home',
+            url: '/admin/home',
+            templateUrl: 'App/templates/admin/home.html',
+            controller: 'adminHomeController',
+            resolve: {
+                allCategories: [
+                    'menuItemsServices', function (menuItemsServices) {
+                        return menuItemsServices.getAllCategories();
+                    }],
+                allTowns: [
+                    'menuItemsServices', function (menuItemsServices) {
+                        return menuItemsServices.getAllTowns();
+                    }],
+                ads: [
+                    'adminAdsService', function (adminAdsService) {
+                        return adminAdsService.getAds();
+                    }
+                ]
+            },
+        });
     }
 ]);
 
@@ -151,6 +173,5 @@ app.run(['$rootScope', 'adsFilterHelper', function ($rootScope, adsFilterHelper)
     $rootScope.$on("$stateChangeSuccess", function (event, toState, toParams) {
         adsFilterHelper.resetSettings();
         $rootScope.title = $rootScope.$state.current.title;
-        console.log($rootScope);
     });
 }]);

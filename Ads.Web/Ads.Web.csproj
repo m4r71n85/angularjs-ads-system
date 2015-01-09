@@ -124,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\app.js" />
+    <Content Include="App\controllers\admin\adminHomeController.js" />
     <Content Include="App\controllers\editAdController.js" />
     <Content Include="App\controllers\homeController.js" />
     <Content Include="App\controllers\loginController.js" />
@@ -135,8 +136,8 @@
     <Content Include="App\directives\headerMenu\headerMenu.html" />
     <Content Include="App\directives\loginRegisterMenu\loginRegister.js" />
     <Content Include="App\directives\loginRegisterMenu\loginRegisterMenu.html" />
-    <Content Include="App\directives\userAdsMenu\userAdsMenu.html" />
-    <Content Include="App\directives\userAdsMenu\userAdsMenu.js" />
+    <Content Include="App\directives\statusFilterMenu\statusFilterMenu.html" />
+    <Content Include="App\directives\statusFilterMenu\statusFilterMenu.js" />
     <Content Include="App\directives\navigationMenu\navigationMenu.html" />
     <Content Include="App\directives\navigationMenu\navigationMenu.js" />
     <Content Include="App\filters\adStatuses.js" />
@@ -151,9 +152,11 @@
     <Content Include="App\services\adsFiltersHelper.js" />
     <Content Include="App\services\adsService.js" />
     <Content Include="App\services\authenticationService.js" />
-    <Content Include="App\services\authHelper.js" />
+    <Content Include="App\services\authSessionHelper.js" />
     <Content Include="App\services\menuItemsServices.js" />
+    <Content Include="App\services\modelStateErrorService.js" />
     <Content Include="App\services\userProfileService.js" />
+    <Content Include="App\templates\admin\home.html" />
     <Content Include="App\templates\editAd.html" />
     <Content Include="App\templates\home.html" />
     <Content Include="App\templates\login.html" />
@@ -168,6 +171,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\favicon.png" />
     <Content Include="Content\images\nophoto.jpg" />
+    <Content Include="Content\loading-bar.css" />
+    <Content Include="Content\loading-bar.min.css" />
     <Content Include="Content\toaster.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

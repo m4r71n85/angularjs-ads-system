@@ -1,14 +1,18 @@
 ﻿'use strict';
 
 app.controller('loginController',
-['authenticationService', '$state', '$scope',
-    function (authenticationService, $state, $scope) {
+['authenticationService', 'authSessionHelper', '$state', '$scope',
+    function (authenticationService, authSessionHelper, $state, $scope) {
 
 
         $scope.login = function () {
             authenticationService.login($scope.user).then(
                 function () {
-                    $state.go('home');
+                    if (authSessionHelper.isAdmin()) {
+                        $state.go('adminHome');
+                    } else {
+                        $state.go('home');
+                    }
                 });
         }
     }

@@ -1,11 +1,11 @@
 ﻿'use strict';
 
-app.directive('userAdsMenu',
+app.directive('statusFilterMenu',
     ['authSessionHelper', function (authSessionHelper) {
     return {
         restrict: 'AE',
         replace:true,
-        templateUrl: '/app/directives/userAdsMenu/userAdsMenu.html',
+        templateUrl: '/app/directives/statusFilterMenu/statusFilterMenu.html',
         controller: [
             'adsFilterHelper', '$rootScope', '$state', '$stateParams', '$scope',
             function (adsFilterHelper, $rootScope, $state, $stateParams, $scope) {

@@ -29,6 +29,9 @@
     var isLoggedIn = function () {
         return !!getSession();
     }
+    var isAdmin = function () {
+        return !!getSession().isAdmin;
+    }
 
     return {
         getSession: getSession,
@@ -36,6 +39,7 @@
         getToken: getToken,
         getUsername: getUsername,
         clearSession: clearSession,
-        isLoggedIn: isLoggedIn
+        isLoggedIn: isLoggedIn,
+        isAdmin: isAdmin,
     };
 }])
