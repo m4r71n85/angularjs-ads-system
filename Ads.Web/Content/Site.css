@@ -89,3 +89,9 @@ h3.panel-title{
     background-color: #ba7200;
     color: #ffffff;
 }
+.border-top{
+    border-top: 2px solid #dddddd;
+}
+.padding-top-15{
+    padding-top:15px;
+}

@@ -27,6 +27,19 @@ app.factory('adminAdsService', [
             return deferred.promise;
         }
 
+        var approveAd = function (adId) {
+            var deferred = $q.defer();
+            $http.put(apiUrl + 'api/admin/ads/approve/' + adId)
+            .success(function (data) {
+                toaster.pop('success', '', "Advertisement published.");
+                deferred.resolve(data);
+            })
+            .error(function (data, status) {
+                deferred.reject(data, status);
+            });
+            return deferred.promise;
+        }
+
         var getAd = function (adId) {
             var deferred = $q.defer();
             $http.get(apiUrl + 'api/user/ads/' + adId)
@@ -106,6 +119,7 @@ app.factory('adminAdsService', [
 
         return ({
             getAds: getAds,
+            approveAd: approveAd,
             getAd: getAd,
             publishAd: publishAd,
             deactivateAd: deactivateAd,

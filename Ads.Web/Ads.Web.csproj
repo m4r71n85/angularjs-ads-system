@@ -143,12 +143,15 @@
     <Content Include="App\filters\adStatuses.js" />
     <Content Include="App\filters\emptyToDash.js" />
     <Content Include="App\interceptors\authInterceptor.js" />
+    <Content Include="App\modals\adminApproveAd\adminApproveAd.html" />
+    <Content Include="App\modals\adminApproveAd\adminApproveAdController.js" />
     <Content Include="App\modals\deactivateAd\deactivateAd.html" />
     <Content Include="App\modals\deleteAd\deleteAd.html" />
     <Content Include="App\modals\deleteAd\deleteAdController.js" />
     <Content Include="App\modals\publishAgainAd\publishAgainAd.html" />
     <Content Include="App\modals\deactivateAd\deactivateAdController.js" />
     <Content Include="App\modals\publishAgainAd\publishAgainAdController.js" />
+    <Content Include="App\services\adminAdsService.js" />
     <Content Include="App\services\adsFiltersHelper.js" />
     <Content Include="App\services\adsService.js" />
     <Content Include="App\services\authenticationService.js" />

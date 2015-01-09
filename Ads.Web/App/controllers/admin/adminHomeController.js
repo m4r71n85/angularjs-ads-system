@@ -1,8 +1,8 @@
 ﻿'use strict';
 
 app.controller('adminHomeController',
-['ads', 'allCategories', 'allTowns', 'adsFilterHelper', 'adminAdsService', 'authSessionHelper', '$scope', 'itemsPerPage',
-    function (ads, allCategories, allTowns, adsFilterHelper, adminAdsService, authSessionHelper, $scope, itemsPerPage) {
+['ads', 'allCategories', 'allTowns', 'adsFilterHelper', 'adminAdsService', 'authSessionHelper', '$modal', '$scope', 'itemsPerPage',
+    function (ads, allCategories, allTowns, adsFilterHelper, adminAdsService, authSessionHelper, $modal, $scope, itemsPerPage) {
         $scope.itemsPerPage = itemsPerPage;
         $scope.allCategories = allCategories;
         $scope.allTowns = allTowns;
@@ -15,6 +15,25 @@ app.controller('adminHomeController',
                     $scope.ads = data;
                 })
         }
+
+
+        $scope.approve = function (ad) {
+            $modal.open({
+                templateUrl: '/app/modals/adminApproveAd/adminApproveAd.html',
+                controller: 'adminApproveAdController',
+                resolve: {
+                    ad: function () {
+                        return ad;
+                    }
+                }
+            }).result.then(function () {
+                adminAdsService.approveAd(ad.id).then(
+                    function () {
+                        updatePageAds();
+                    });
+            });
+        }
+
 
         $scope.loadPage = function () {
             adsFilterHelper.setPage($scope.currentPage);
