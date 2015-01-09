@@ -67,7 +67,7 @@ app.factory('adminAdsService', [
         }
         var getAd = function (adId) {
             var deferred = $q.defer();
-            $http.get(apiUrl + 'api/user/ads/' + adId)
+            $http.get(apiUrl + 'api/admin/ads/' + adId)
             .success(function (data) {
                 deferred.resolve(data);
             })

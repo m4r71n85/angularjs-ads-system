@@ -125,6 +125,7 @@
   <ItemGroup>
     <Content Include="App\app.js" />
     <Content Include="App\controllers\admin\adminHomeController.js" />
+    <Content Include="App\controllers\admin\adminEditAdController.js" />
     <Content Include="App\controllers\editAdController.js" />
     <Content Include="App\controllers\homeController.js" />
     <Content Include="App\controllers\loginController.js" />
@@ -163,6 +164,7 @@
     <Content Include="App\services\menuItemsServices.js" />
     <Content Include="App\services\modelStateErrorService.js" />
     <Content Include="App\services\userProfileService.js" />
+    <Content Include="App\templates\admin\editAd.html" />
     <Content Include="App\templates\admin\home.html" />
     <Content Include="App\templates\editAd.html" />
     <Content Include="App\templates\home.html" />

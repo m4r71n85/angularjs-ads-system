@@ -162,6 +162,28 @@ app.config([
                 ]
             },
         });
+
+        $stateProvider.state('adminEditAd', {
+            title: 'Edit Advertisement',
+            url: '/admin/ads/edit/{adId}',
+            templateUrl: 'App/templates/admin/editAd.html',
+            controller: 'adminEditAdController',
+            resolve: {
+                ad: [
+                    'adminAdsService', '$stateParams', function (adsService, $stateParams) {
+                        return adminAdsService.getAd($stateParams.adId);
+                    }
+                ],
+                allCategories: [
+                    'menuItemsServices', function (menuItemsServices) {
+                        return menuItemsServices.getAllCategories();
+                    }],
+                allTowns: [
+                    'menuItemsServices', function (menuItemsServices) {
+                        return menuItemsServices.getAllTowns();
+                    }],
+            }
+        });
     }
 ]);
 

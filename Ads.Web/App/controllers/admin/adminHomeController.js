@@ -1,8 +1,8 @@
 ﻿'use strict';
 
 app.controller('adminHomeController',
-['ads', 'allCategories', 'allTowns', 'adsFilterHelper', 'adminAdsService', 'authSessionHelper', '$modal', '$scope', 'itemsPerPage',
-    function (ads, allCategories, allTowns, adsFilterHelper, adminAdsService, authSessionHelper, $modal, $scope, itemsPerPage) {
+['ads', 'allCategories', 'allTowns', 'adsFilterHelper', 'adminAdsService', 'authSessionHelper', '$modal', '$state', '$scope', 'itemsPerPage',
+    function (ads, allCategories, allTowns, adsFilterHelper, adminAdsService, authSessionHelper, $modal, $state, $scope, itemsPerPage) {
         $scope.itemsPerPage = itemsPerPage;
         $scope.allCategories = allCategories;
         $scope.allTowns = allTowns;
@@ -66,6 +66,10 @@ app.controller('adminHomeController',
                         updatePageAds();
                     });
             });
+        }
+
+        $scope.edit = function (adId) {
+            $state.go('adminEditAd', { id: adId });
         }
 
         $scope.loadPage = function () {
