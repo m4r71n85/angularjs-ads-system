@@ -1,9 +1,9 @@
 ﻿<!DOCTYPE html>
 <html ng-app="app">
     <head>
-        <link rel="icon" type="image/png" href="~/Content/Images/favicon.png" />
+        <link rel="icon" type="image/png" href="~/Content/images/favicon.png" />
         <meta charset="utf-8" />
-        <title ng-bind="'Ads - ' + title">Ads Coursework</title>
+        <title ng-bind="'Ads -' + title">Ads Coursework</title>
         @Styles.Render("~/bundles/css/site")
         @RenderSection("styles", false)
     </head>
@@ -11,6 +11,7 @@
     <div class="container">
         <header-menu></header-menu>
         <section id="main-section">
+            <h2 ng-bind="title"></h2>
             @RenderBody()
         </section>
     </div>
