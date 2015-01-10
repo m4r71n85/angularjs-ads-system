@@ -149,6 +149,8 @@
     <Content Include="App\modals\adminDeleteAd\adminDeleteAdController.js" />
     <Content Include="App\modals\adminApproveAd\adminApproveAd.html" />
     <Content Include="App\modals\adminApproveAd\adminApproveAdController.js" />
+    <Content Include="App\modals\adminDeleteUser\adminDeleteUser.html" />
+    <Content Include="App\modals\adminDeleteUser\adminDeleteUserController.js" />
     <Content Include="App\modals\adminRejectAd\adminRejectAd.html" />
     <Content Include="App\modals\adminRejectAd\adminRejectAdController.js" />
     <Content Include="App\modals\deactivateAd\deactivateAd.html" />

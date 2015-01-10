@@ -23,8 +23,22 @@ app.factory('adminUserService', [
             return deferred.promise;
         }
 
+        var deleteUser = function (username) {
+            var deferred = $q.defer();
+            $http.delete(apiUrl + 'api/admin/user/' + username)
+            .success(function (data) {
+                toaster.pop('success', '', data.message);
+                deferred.resolve(data);
+            })
+            .error(function (data, status) {
+                deferred.reject(data, status);
+            });
+            return deferred.promise;
+        }
+
         return ({
             getUsers: getUsers,
+            deleteUser: deleteUser
         });
     }
 ])
