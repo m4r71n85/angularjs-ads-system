@@ -16,8 +16,8 @@ app.directive('navigationMenu',
                     $scope.navigationMenuItems = [
                         { title: "Ads", sref: "adminHome", authenticated: true },
                         { title: "Users", sref: "adminUsers", authenticated: true },
-                        { title: "Categories", sref: "categories", authenticated: true },
-                        { title: "Town", sref: "towns", authenticated: true }
+                        { title: "Categories", sref: "adminCategories", authenticated: true },
+                        { title: "Town", sref: "adminTown", authenticated: true }
                     ];
                 } else {
                     $scope.navigationMenuItems = [
