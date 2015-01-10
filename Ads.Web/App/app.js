@@ -224,7 +224,7 @@ app.config([
         $stateProvider.state('adminCategories', {
             title: 'Categories',
             url: '/admin/categories',
-            templateUrl: 'App/templates/admin/category/categories.html',
+            templateUrl: 'App/templates/admin/categories.html',
             controller: 'adminCategoriesController',
             resolve: {
                 categories: [

@@ -1,0 +1,44 @@
+﻿app.controller('adminCategoriesController',
+['categories', 'itemsPerPage', 'adsFilterHelper', 'adminCategoryService', '$modal', '$state', '$scope',
+    function (categories, itemsPerPage, adsFilterHelper, adminCategoryService, $modal, $state, $scope) {
+        $scope.categories = categories;
+        $scope.itemsPerPage = itemsPerPage;
+        //$scope.edit = function (catId) {
+        //    $state.go('editCategory', { catId: catId });
+        //}
+
+        //$scope.new = function () {
+        //    $state.go('newCategory');
+        //}
+
+        $scope.delete = function (category) {
+            $modal.open({
+                templateUrl: '/app/modals/adminDeleteCategory/adminDeleteCategory.html',
+                controller: 'adminDeleteCategoryrController',
+                resolve: {
+                    category: function () {
+                        return category;
+                    }
+                }
+            }).result.then(function () {
+                adminCategoryService.deleteCategory(category.Id).then(
+                    function () {
+                        updatePageCategories();
+                    });
+            });
+        }
+
+        function updatePageCategories() {
+            adminCategoryService.getCategories().then(
+                function (data) {
+                    $scope.categories = data;
+                });
+        }
+
+        $scope.loadPage = function () {
+            adsFilterHelper.setPage($scope.currentPage);
+            updatePageCategories();
+        }
+
+    }
+]);
