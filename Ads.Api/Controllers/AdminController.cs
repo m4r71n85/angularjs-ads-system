@@ -610,7 +610,7 @@
             var categoriesToReturn = categories.ToList().Select(c => new
             {
                 id = c.Id,
-                username = c.Name
+                name = c.Name
             });
 
             return this.Ok(
@@ -705,6 +705,20 @@
                    message = "Category #" + id + " deleted successfully."
                }
            );
+        }
+
+        // Get /api/Admin/Categories/{id}
+        [HttpGet]
+        [Route("Categories/{id:int}")]
+        public IHttpActionResult GetCategory(int id)
+        {
+            var category = this.Data.Categories.All().FirstOrDefault(c => c.Id == id);
+            if (category == null)
+            {
+                return this.BadRequest("Category #" + id + " not found!");
+            }
+
+            return this.Ok(category);
         }
 
         // GET api/Admin/Towns
@@ -866,6 +880,20 @@
                    message = "Town #" + id + " deleted successfully."
                }
            );
+        }
+
+        // Get /api/Admin/Towns/{id}
+        [HttpGet]
+        [Route("Towns/{id:int}")]
+        public IHttpActionResult GetTown(int id)
+        {
+            var town = this.Data.Towns.All().FirstOrDefault(c => c.Id == id);
+            if (town == null)
+            {
+                return this.BadRequest("Town #" + id + " not found!");
+            }
+
+            return this.Ok(town);
         }
         
         protected override void Dispose(bool disposing)
