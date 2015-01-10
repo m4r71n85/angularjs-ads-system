@@ -234,6 +234,20 @@ app.config([
                 ]
             }
         });
+
+        $stateProvider.state('adminCreateCategory', {
+            title: 'Create Category',
+            url: '/admin/create/category',
+            templateUrl: 'App/templates/admin/createCategory.html',
+            controller: 'adminCreateCategoryController',
+            resolve: {
+                categories: [
+                    'adminCategoryService', function (adminCategoryService) {
+                        return adminCategoryService.getCategories();
+                    }
+                ]
+            }
+        });
     }
 ]);
 

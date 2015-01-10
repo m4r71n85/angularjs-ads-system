@@ -1,14 +1,12 @@
-﻿app.controller('adminCategoriesController',
+﻿'use strict';
+
+app.controller('adminCategoriesController',
 ['categories', 'itemsPerPage', 'adsFilterHelper', 'adminCategoryService', '$modal', '$state', '$scope',
     function (categories, itemsPerPage, adsFilterHelper, adminCategoryService, $modal, $state, $scope) {
         $scope.categories = categories;
         $scope.itemsPerPage = itemsPerPage;
         //$scope.edit = function (catId) {
         //    $state.go('editCategory', { catId: catId });
-        //}
-
-        //$scope.new = function () {
-        //    $state.go('newCategory');
         //}
 
         $scope.delete = function (category) {
