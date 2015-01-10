@@ -31,6 +31,9 @@ app.factory('adminUserService', [
                 deferred.resolve(data);
             })
             .error(function (data, status) {
+                if (data.message) {
+                    toaster.pop('error', '', data.message);
+                }
                 deferred.reject(data, status);
             });
             return deferred.promise;
