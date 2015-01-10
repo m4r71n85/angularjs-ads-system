@@ -65,6 +65,7 @@ app.factory('adminAdsService', [
             });
             return deferred.promise;
         }
+
         var getAd = function (adId) {
             var deferred = $q.defer();
             $http.get(apiUrl + 'api/admin/ads/' + adId)
@@ -77,50 +78,11 @@ app.factory('adminAdsService', [
             return deferred.promise;
         }
 
-        var publishAd = function (ad) {
-            var deferred = $q.defer();
-            $http.post(apiUrl + 'api/user/ads', ad)
-            .success(function (data) {
-                deferred.resolve(data);
-                toaster.pop('success', '', "Advertisement submitted for approval. Once approved, it will be published.");
-            })
-            .error(function (data, status) {
-                deferred.reject(data, status);
-            });
-            return deferred.promise;
-        }
-
-        var deactivateAd = function (adId) {
-            var deferred = $q.defer();
-            $http.put(apiUrl + 'api/user/ads/deactivate/' + adId)
-            .success(function (data) {
-                toaster.pop('success', '', "Advertisement deactivated.");
-                deferred.resolve(data);
-            })
-            .error(function (data, status) {
-                deferred.reject(data, status);
-            });
-            return deferred.promise;
-        }
-
-        var publishAgainAd = function (adId) {
-            var deferred = $q.defer();
-            $http.put(apiUrl + 'api/user/ads/publishagain/' + adId)
-            .success(function (data) {
-                toaster.pop('success', '', "Advertisement submitted for approval. Once approved, it will be published.");
-                deferred.resolve(data);
-            })
-            .error(function (data, status) {
-                deferred.reject(data, status);
-            });
-            return deferred.promise;
-        }
-
         var saveEdit = function (ad) {
             var deferred = $q.defer();
-            $http.put(apiUrl + 'api/user/ads/' + ad.id, ad)
+            $http.put(apiUrl + 'api/admin/ads/' + ad.id, ad)
             .success(function (data) {
-                toaster.pop('success', '', "Advertisement edited. Don't forget to submit it for publishing.");
+                toaster.pop('success', '', "Advertisement changes saved.");
                 deferred.resolve(data);
             })
             .error(function (data, status) {
@@ -134,11 +96,8 @@ app.factory('adminAdsService', [
             approveAd: approveAd,
             rejectAd: rejectAd,
             getAd: getAd,
-            publishAd: publishAd,
-            deactivateAd: deactivateAd,
             deleteAd: deleteAd,
-            publishAgainAd: publishAgainAd,
-            saveEdit: saveEdit
+            saveEdit: saveEdit,
         });
     }
 ])

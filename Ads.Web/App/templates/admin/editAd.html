@@ -18,6 +18,27 @@
                         <textarea ng-model="ad.text" id="text" name="text" placeholder="Text" class="form-control" ng-required="true"></textarea>
                     </div>
 
+                    <!-- Username input-->
+                    <div class="form-group">
+                        <label class="control-label" for="username">Username: <span class="text-danger">*</span></label>
+                        <input ng-model="ad.ownerUsername" id="username" name="username" placeholder="Username" class="form-control input-md" ng-required="true" type="text">
+                    </div>
+
+                    <!-- Date input-->
+                    <div class="form-group">
+                        <label class="control-label" for="date">Date: <span class="text-danger">*</span></label>
+                        <input type="text"
+                               ng-click="datePicker.ngClick($event)"
+                               ng-keydown="$event.preventDefault();"
+                               class="form-control"
+                               datepicker-popup="{{datePicker.popup}}"
+                               ng-model="ad.date"
+                               is-open="datePicker.isOpen"
+                               datepicker-options="datePicker.options"
+                               show-button-bar="false"
+                               close-text="Close" />
+                    </div>
+
                     <!-- Category input-->
                     <div class="form-group">
                         <label class="control-label" for="image">Category: </label>
@@ -37,7 +58,11 @@
                             <option value="">Choose Town...</option>
                         </select>
                     </div>
+
                 </div>
+
+                
+
                 <div class="col-sm-6">
                     <!-- Image input-->
                     <div class="form-group">
@@ -53,13 +78,22 @@
                         <span class="text-danger" ng-show="fileTypeError">File type not supported!</span>
                         <button ng-click="deleteImage()" class="btn btn-warning margin-top-15" ng-show="ad.imageDataUrl!=null">Delete image</button>
                     </div>
+
+                    <!-- Status select-->
+                    <div class="form-group">
+                        <label class="control-label" for="image">Status: </label>
+                        <select id="status" name="status" class="form-control"
+                                ng-options="status as (status|adStatus) for status in allStatuses"
+                                ng-model="ad.status"></select>
+                    </div>
+
                 </div>
             </div>
             <div class="row">
                 <div class="form-group">
                     <div class="col-sm-5 col-xs-12 margin-top-15">
                         <!-- Button -->
-                        <button ng-click="editForm.$valid && edit()" id="publish" name="publish" class="btn btn-primary">Edit</button>
+                        <button ng-click="editForm.$valid && saveEdit()" id="publish" name="publish" class="btn btn-primary">Edit</button>
                         <div class="pull-right">
                             <a ui-sref="userAds" class="btn btn-default">Cancel</a>
                         </div>

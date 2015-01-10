@@ -170,7 +170,7 @@ app.config([
             controller: 'adminEditAdController',
             resolve: {
                 ad: [
-                    'adminAdsService', '$stateParams', function (adsService, $stateParams) {
+                    'adminAdsService', '$stateParams', function (adminAdsService, $stateParams) {
                         return adminAdsService.getAd($stateParams.adId);
                     }
                 ],

@@ -16,7 +16,6 @@ app.controller('adminHomeController',
                 })
         }
 
-
         $scope.approve = function (ad) {
             $modal.open({
                 templateUrl: '/app/modals/adminApproveAd/adminApproveAd.html',
@@ -69,7 +68,7 @@ app.controller('adminHomeController',
         }
 
         $scope.edit = function (adId) {
-            $state.go('adminEditAd', { id: adId });
+            $state.go('adminEditAd', { adId: adId });
         }
 
         $scope.loadPage = function () {

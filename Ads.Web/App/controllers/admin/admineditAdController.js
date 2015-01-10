@@ -1,19 +1,18 @@
-﻿/// <reference path="../services/adsService.js" />
-'use strict';
+﻿'use strict';
 
 app.controller('adminEditAdController',
-['ad', 'adsService', 'allCategories', 'allTowns', '$state', '$scope',
-    function (ad, adsService, allCategories, allTowns, $state, $scope) {
-        $scope.ad = ad;
+['ad', 'allCategories', 'allTowns', 'adminAdsService', 'datePickerService', '$state', '$scope',
+    function (ad, allCategories, allTowns, adminAdsService, datePickerService, $state, $scope) {
         ad.changeImage = false;
+        $scope.ad = ad;
         $scope.allCategories = allCategories;
         $scope.allTowns = allTowns;
-        
-
-        $scope.edit = function () {
-            adsService.saveEdit($scope.ad).then(
+        $scope.datePicker = datePickerService.init();
+        $scope.allStatuses = ['Inactive', 'WaitingApproval', 'Published', 'Rejected'];
+        $scope.saveEdit = function () {
+            adminAdsService.saveEdit($scope.ad).then(
                 function () {
-                    $state.go('userAds')
+                    $state.go('adminHome')
                 });
         }
         
