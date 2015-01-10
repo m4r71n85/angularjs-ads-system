@@ -142,7 +142,7 @@ app.config([
         })
 
         $stateProvider.state('adminHome', {
-            title: 'Admin Home',
+            title: 'Home',
             url: '/admin/home',
             templateUrl: 'App/templates/admin/home.html',
             controller: 'adminHomeController',
@@ -218,6 +218,20 @@ app.config([
                     'menuItemsServices', function (menuItemsServices) {
                         return menuItemsServices.getAllTowns();
                     }],
+            }
+        });
+
+        $stateProvider.state('adminCategories', {
+            title: 'Categories',
+            url: '/admin/categories',
+            templateUrl: 'App/templates/admin/category/categories.html',
+            controller: 'adminCategoriesController',
+            resolve: {
+                categories: [
+                    'adminCategoryService', function (adminCategoryService) {
+                        return adminCategoryService.getCategories();
+                    }
+                ]
             }
         });
     }
