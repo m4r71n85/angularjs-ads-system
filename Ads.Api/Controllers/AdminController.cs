@@ -431,6 +431,43 @@
             );
         }
 
+        // GET api/Admin/User/{username}
+        [HttpGet]
+        [Route("User/{username}")]
+        public IHttpActionResult GetUser(string username)
+        {
+
+            // Select all users along with their roles
+            var user = this.Data.Users.All().Include(u => u.Roles).Include(u => u.Town).Where(u=>u.UserName == username).FirstOrDefault();
+            if (user != null) { 
+            // Select the admin role ID
+            var adminRoleId = this.Data.UserRoles.All().First(r => r.Name == "Administrator").Id;
+            // Select the columns to be returned 
+            var usersToReturn = new
+            {
+                id = user.Id,
+                username = user.UserName,
+                name = user.Name,
+                email = user.Email,
+                phoneNumber = user.PhoneNumber,
+                townId = user.TownId,
+                townName = user.TownId != null ? user.Town.Name : null,
+                isAdmin = user.Roles.Any(r => r.RoleId == adminRoleId)
+            };
+
+            return this.Ok(
+                new
+                {
+                    user = usersToReturn
+                }
+            );
+            }
+            else
+            {
+                return this.BadRequest("User doesn't exist!");
+            }
+        }
+
         // PUT api/Admin/SetPassword
         [HttpPut]
         [Route("SetPassword")]
