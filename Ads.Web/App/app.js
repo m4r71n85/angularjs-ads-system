@@ -198,6 +198,28 @@ app.config([
                 ]
             }
         });
+
+        $stateProvider.state('adminEditUser', {
+            title: 'Edit User',
+            url: '/admin/users/edit/{username}',
+            templateUrl: 'App/templates/admin/editUser.html',
+            controller: 'adminEditUserController',
+            resolve: {
+                user: [
+                    'adminUserService', '$stateParams', function (adminUserService, $stateParams) {
+                        return adminUserService.getUser($stateParams.username);
+                    }
+                ],
+                allCategories: [
+                    'menuItemsServices', function (menuItemsServices) {
+                        return menuItemsServices.getAllCategories();
+                    }],
+                allTowns: [
+                    'menuItemsServices', function (menuItemsServices) {
+                        return menuItemsServices.getAllTowns();
+                    }],
+            }
+        });
     }
 ]);
 

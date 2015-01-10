@@ -1,5 +1,5 @@
-﻿app.factory('authInterceptor', ['$q', 'authSessionHelper', '$location',
-    function ($q, authSessionHelper, $location) {
+﻿app.factory('authInterceptor', ['$q', '$timeout', 'toaster', 'authSessionHelper', '$location',
+    function ($q, $timeout, toaster, authSessionHelper, $location) {
 
         'use strict';
 
@@ -30,7 +30,10 @@
 
         var responseError = function (rejection) {
             if (rejection.status === 403 || rejection.status === 401) {
-                $location.url('/account/login');
+                $timeout(function(){ 
+                    $location.url('/account/login');
+                    toaster.pop('error', '', 'You are not authorized to view this page.');
+                }, 1);
             }
             return $q.reject(rejection);
         };

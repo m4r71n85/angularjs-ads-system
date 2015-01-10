@@ -6,8 +6,8 @@ app.controller('adminUsersController',
         $scope.itemsPerPage = itemsPerPage;
         $scope.users = users;
         
-        $scope.edit = function (userId) {
-            //$state.go('adminEditUser', { userId: userId });
+        $scope.edit = function (username) {
+            $state.go('adminEditUser', { username: username });
         }
 
         $scope.delete = function (user) {
