@@ -1,0 +1,27 @@
+﻿<table class="table table-responsive table-hover table-condensed">
+    <thead>
+        <tr class="info">
+            <th>Username</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="user in users.users">
+            <td ng-bind="user.username"></td>
+            <td ng-bind="user.name"></td>
+            <td ng-bind="user.email"></td>
+            <td ng-bind="user.phoneNumber"></td>
+            <td>
+                <button class="btn btn-info btn-xs">Edit</button>
+                <button class="btn btn-info btn-xs">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="row" ng-show="users.numItems > (itemsPerPage*2)">
+    <pagination total-items="users.numItems" items-per-page="itemsPerPage*2" ng-model="currentPage" ng-click="loadPage()"></pagination>
+</div>

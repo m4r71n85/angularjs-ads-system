@@ -184,6 +184,20 @@ app.config([
                     }],
             }
         });
+
+        $stateProvider.state('adminUsers', {
+            title: 'Users',
+            url: '/admin/users',
+            templateUrl: 'App/templates/admin/users.html',
+            controller: 'adminUsersController',
+            resolve: {
+                users: [
+                    'adminUserService', function (adminUserService) {
+                        return adminUserService.getUsers();
+                    }
+                ]
+            }
+        });
     }
 ]);
 
