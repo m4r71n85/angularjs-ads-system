@@ -32,6 +32,7 @@ namespace Ads.Web
 
             bundles.Add(
                new StyleBundle("~/bundles/css/site").Include(
+                   "~/Content/bootstrap.css",
                    "~/Content/bootstrap-yeti-theme.css",
                    "~/Content/Site.css",
                    "~/Content/toaster.css",

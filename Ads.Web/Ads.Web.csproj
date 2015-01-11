@@ -184,8 +184,10 @@
     <Content Include="App\services\userProfileService.js" />
     <Content Include="App\templates\admin\categories.html" />
     <Content Include="App\templates\admin\createCategory.html" />
+    <Content Include="App\templates\admin\createTown.html" />
     <Content Include="App\templates\admin\editAd.html" />
     <Content Include="App\templates\admin\editCategory.html" />
+    <Content Include="App\templates\admin\editTown.html" />
     <Content Include="App\templates\admin\editUser.html" />
     <Content Include="App\templates\admin\home.html" />
     <Content Include="App\templates\admin\towns.html" />

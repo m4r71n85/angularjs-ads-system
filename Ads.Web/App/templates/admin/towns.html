@@ -25,5 +25,5 @@
 </div>
 <div class="clearfix"></div>
 <div class="row" ng-show="towns.numItems > (itemsPerPage*2)">
-    <pagination total-items="towns.numItems" items-per-page="itemsPerPage*2" ng-model="currentPage" ng-click="loadPage()"></pagination>
+    <pagination boundary-links="true"  total-items="towns.numItems" items-per-page="itemsPerPage*2" ng-model="currentPage" ng-click="loadPage()"></pagination>
 </div>

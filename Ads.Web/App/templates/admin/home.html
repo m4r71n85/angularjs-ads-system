@@ -66,7 +66,7 @@
 
     <!--    Pagination-->
     <div class="row text-center" ng-show="ads.numItems > itemsPerPage">
-        <pagination total-items="ads.numItems" items-per-page="itemsPerPage" ng-model="currentPage" ng-click="loadPage()"></pagination>
+        <pagination boundary-links="true"  total-items="ads.numItems" items-per-page="itemsPerPage" ng-model="currentPage" ng-click="loadPage()"></pagination>
     </div>
 </div>
 
