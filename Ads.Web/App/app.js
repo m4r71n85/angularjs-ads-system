@@ -248,6 +248,19 @@ app.config([
                 ]
             }
         });
+
+        $stateProvider.state('adminEditCategory', {
+            title: 'Categories',
+            url: '/admin/category/{catId}',
+            templateUrl: 'App/templates/admin/editCategory.html',
+            controller: 'adminEditCategoryController',
+            resolve: {
+                category: [
+                    '$stateParams', 'adminCategoryService', function ($stateParams, adminCategoryService) {
+                        return adminCategoryService.getCategory($stateParams.catId);
+                    }]
+            }
+        });
     }
 ]);
 

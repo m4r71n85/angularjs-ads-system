@@ -12,14 +12,14 @@ app.controller('adminCategoriesController',
         $scope.delete = function (category) {
             $modal.open({
                 templateUrl: '/app/modals/adminDeleteCategory/adminDeleteCategory.html',
-                controller: 'adminDeleteCategoryrController',
+                controller: 'adminDeleteCategoryController',
                 resolve: {
                     category: function () {
                         return category;
                     }
                 }
             }).result.then(function () {
-                adminCategoryService.deleteCategory(category.Id).then(
+                adminCategoryService.deleteCategory(category.id).then(
                     function () {
                         updatePageCategories();
                     });

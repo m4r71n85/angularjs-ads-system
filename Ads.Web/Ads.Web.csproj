@@ -126,6 +126,7 @@
     <Content Include="App\app.js" />
     <Content Include="App\controllers\admin\adminCategoriesController.js" />
     <Content Include="App\controllers\admin\adminCreateCategoryController.js" />
+    <Content Include="App\controllers\admin\adminEditCategoryController.js" />
     <Content Include="App\controllers\admin\adminEditUserController.js" />
     <Content Include="App\controllers\admin\adminHomeController.js" />
     <Content Include="App\controllers\admin\adminEditAdController.js" />
@@ -152,6 +153,8 @@
     <Content Include="App\modals\adminDeleteAd\adminDeleteAdController.js" />
     <Content Include="App\modals\adminApproveAd\adminApproveAd.html" />
     <Content Include="App\modals\adminApproveAd\adminApproveAdController.js" />
+    <Content Include="App\modals\adminDeleteCategory\adminDeleteCategory.html" />
+    <Content Include="App\modals\adminDeleteCategory\adminDeleteCategoryController.js" />
     <Content Include="App\modals\adminDeleteUser\adminDeleteUser.html" />
     <Content Include="App\modals\adminDeleteUser\adminDeleteUserController.js" />
     <Content Include="App\modals\adminRejectAd\adminRejectAd.html" />
@@ -174,7 +177,9 @@
     <Content Include="App\services\modelStateErrorService.js" />
     <Content Include="App\services\userProfileService.js" />
     <Content Include="App\templates\admin\categories.html" />
+    <Content Include="App\templates\admin\createCategory.html" />
     <Content Include="App\templates\admin\editAd.html" />
+    <Content Include="App\templates\admin\editCategory.html" />
     <Content Include="App\templates\admin\editUser.html" />
     <Content Include="App\templates\admin\home.html" />
     <Content Include="App\templates\admin\users.html" />

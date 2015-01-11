@@ -27,7 +27,7 @@ app.factory('adminCategoryService', [
             var deferred = $q.defer();
             $http.delete(apiUrl + 'api/admin/categories/' + catId)
             .success(function (data) {
-                toaster.pop('success', '', data.message);
+                toaster.pop('success', '', 'Category deleted successfully.');
                 deferred.resolve(data);
             })
             .error(function (data, status) {
@@ -65,11 +65,11 @@ app.factory('adminCategoryService', [
             return deferred.promise;
         }
 
-        var updateCategory = function (user) {
+        var updateCategory = function (category) {
             var deferred = $q.defer();
-            $http.put(apiUrl + 'api/admin/user/' + user.username, user)
+            $http.put(apiUrl + 'api/admin/categories/' + category.id, category)
             .success(function (data) {
-                toaster.pop('success', '', "User profile successfully updated.");
+                toaster.pop('success', '', "Category successfully updated.");
                 deferred.resolve(data);
             })
             .error(function (data, status) {
