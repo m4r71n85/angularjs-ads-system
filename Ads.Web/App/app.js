@@ -261,6 +261,47 @@ app.config([
                     }]
             }
         });
+
+        $stateProvider.state('adminTowns', {
+            title: 'Towns',
+            url: '/admin/towns',
+            templateUrl: 'App/templates/admin/towns.html',
+            controller: 'adminTownsController',
+            resolve: {
+                categories: [
+                    'adminTownService', function (adminTownService) {
+                        return adminTownService.getCategories();
+                    }
+                ]
+            }
+        });
+
+        $stateProvider.state('adminCreateTown', {
+            title: 'Create Category',
+            url: '/admin/create/town',
+            templateUrl: 'App/templates/admin/createTown.html',
+            controller: 'adminCreateTownController',
+            resolve: {
+                categories: [
+                    'adminTownService', function (adminTownService) {
+                        return adminTownService.getCategories();
+                    }
+                ]
+            }
+        });
+
+        $stateProvider.state('adminEditTown', {
+            title: 'Towns',
+            url: '/admin/town/{townId}',
+            templateUrl: 'App/templates/admin/editTown.html',
+            controller: 'adminEditTownController',
+            resolve: {
+                category: [
+                    '$stateParams', 'adminTownService', function ($stateParams, adminTownService) {
+                        return adminTownService.getCategory($stateParams.townId);
+                    }]
+            }
+        });
     }
 ]);
 
