@@ -7,17 +7,17 @@ app.controller('adminTownsController',
         $scope.itemsPerPage = itemsPerPage;
 
 
-        $scope.delete = function (category) {
+        $scope.delete = function (town) {
             $modal.open({
-                templateUrl: '/app/modals/adminDeleteCategory/adminDeleteCategory.html',
-                controller: 'adminDeleteCategoryController',
+                templateUrl: '/app/modals/adminDeleteTown/adminDeleteTown.html',
+                controller: 'adminDeleteTownController',
                 resolve: {
-                    category: function () {
-                        return category;
+                    town: function () {
+                        return town;
                     }
                 }
             }).result.then(function () {
-                adminTownService.deleteCategory(category.id).then(
+                adminTownService.deleteTown(town.id).then(
                     function () {
                         updatePageTowns();
                     });

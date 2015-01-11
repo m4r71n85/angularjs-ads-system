@@ -156,6 +156,8 @@
     <Content Include="App\modals\adminDeleteAd\adminDeleteAdController.js" />
     <Content Include="App\modals\adminApproveAd\adminApproveAd.html" />
     <Content Include="App\modals\adminApproveAd\adminApproveAdController.js" />
+    <Content Include="App\modals\adminDeleteTown\adminDeleteTown.html" />
+    <Content Include="App\modals\adminDeleteTown\adminDeleteTownController.js" />
     <Content Include="App\modals\adminDeleteCategory\adminDeleteCategory.html" />
     <Content Include="App\modals\adminDeleteCategory\adminDeleteCategoryController.js" />
     <Content Include="App\modals\adminDeleteUser\adminDeleteUser.html" />
