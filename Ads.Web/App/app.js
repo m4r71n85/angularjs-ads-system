@@ -268,26 +268,19 @@ app.config([
             templateUrl: 'App/templates/admin/towns.html',
             controller: 'adminTownsController',
             resolve: {
-                categories: [
+                towns: [
                     'adminTownService', function (adminTownService) {
-                        return adminTownService.getCategories();
+                        return adminTownService.getTowns();
                     }
                 ]
             }
         });
 
         $stateProvider.state('adminCreateTown', {
-            title: 'Create Category',
+            title: 'Create Town',
             url: '/admin/create/town',
             templateUrl: 'App/templates/admin/createTown.html',
             controller: 'adminCreateTownController',
-            resolve: {
-                categories: [
-                    'adminTownService', function (adminTownService) {
-                        return adminTownService.getCategories();
-                    }
-                ]
-            }
         });
 
         $stateProvider.state('adminEditTown', {
@@ -298,7 +291,7 @@ app.config([
             resolve: {
                 category: [
                     '$stateParams', 'adminTownService', function ($stateParams, adminTownService) {
-                        return adminTownService.getCategory($stateParams.townId);
+                        return adminTownService.getTown($stateParams.townId);
                     }]
             }
         });

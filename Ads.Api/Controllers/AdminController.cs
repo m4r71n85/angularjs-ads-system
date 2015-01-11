@@ -786,7 +786,7 @@
             var townsToReturn = towns.ToList().Select(c => new
             {
                 id = c.Id,
-                username = c.Name
+                name = c.Name
             });
 
             return this.Ok(

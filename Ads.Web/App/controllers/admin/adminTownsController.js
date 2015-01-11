@@ -1,13 +1,11 @@
 ﻿'use strict';
 
 app.controller('adminTownsController',
-['categories', 'itemsPerPage', 'adsFilterHelper', 'adminCategoryService', '$modal', '$state', '$scope',
-    function (categories, itemsPerPage, adsFilterHelper, adminCategoryService, $modal, $state, $scope) {
-        $scope.categories = categories;
+['towns', 'itemsPerPage', 'adsFilterHelper', 'adminTownService', '$modal', '$state', '$scope',
+    function (towns, itemsPerPage, adsFilterHelper, adminTownService, $modal, $state, $scope) {
+        $scope.towns = towns;
         $scope.itemsPerPage = itemsPerPage;
-        //$scope.edit = function (catId) {
-        //    $state.go('editCategory', { catId: catId });
-        //}
+
 
         $scope.delete = function (category) {
             $modal.open({
@@ -19,23 +17,23 @@ app.controller('adminTownsController',
                     }
                 }
             }).result.then(function () {
-                adminCategoryService.deleteCategory(category.id).then(
+                adminTownService.deleteCategory(category.id).then(
                     function () {
-                        updatePageCategories();
+                        updatePageTowns();
                     });
             });
         }
 
-        function updatePageCategories() {
-            adminCategoryService.getCategories().then(
+        function updatePageTowns() {
+            adminTownService.getTowns().then(
                 function (data) {
-                    $scope.categories = data;
+                    $scope.towns = data;
                 });
         }
 
         $scope.loadPage = function () {
             adsFilterHelper.setPage($scope.currentPage);
-            updatePageCategories();
+            updatePageTowns();
         }
 
     }

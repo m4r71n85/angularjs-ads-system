@@ -124,8 +124,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\app.js" />
+    <Content Include="App\controllers\admin\adminTownsController.js" />
     <Content Include="App\controllers\admin\adminCategoriesController.js" />
+    <Content Include="App\controllers\admin\adminCreateTownController .js" />
     <Content Include="App\controllers\admin\adminCreateCategoryController.js" />
+    <Content Include="App\controllers\admin\adminEditTownController.js" />
     <Content Include="App\controllers\admin\adminEditCategoryController.js" />
     <Content Include="App\controllers\admin\adminEditUserController.js" />
     <Content Include="App\controllers\admin\adminHomeController.js" />
@@ -166,6 +169,7 @@
     <Content Include="App\modals\deactivateAd\deactivateAdController.js" />
     <Content Include="App\modals\publishAgainAd\publishAgainAdController.js" />
     <Content Include="App\services\adminAdsService.js" />
+    <Content Include="App\services\adminTownService.js" />
     <Content Include="App\services\adminCategoryService.js" />
     <Content Include="App\services\adminUserService.js" />
     <Content Include="App\services\adsFiltersHelper.js" />
@@ -182,6 +186,7 @@
     <Content Include="App\templates\admin\editCategory.html" />
     <Content Include="App\templates\admin\editUser.html" />
     <Content Include="App\templates\admin\home.html" />
+    <Content Include="App\templates\admin\towns.html" />
     <Content Include="App\templates\admin\users.html" />
     <Content Include="App\templates\editAd.html" />
     <Content Include="App\templates\home.html" />
