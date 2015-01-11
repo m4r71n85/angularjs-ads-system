@@ -240,13 +240,6 @@ app.config([
             url: '/admin/create/category',
             templateUrl: 'App/templates/admin/createCategory.html',
             controller: 'adminCreateCategoryController',
-            resolve: {
-                categories: [
-                    'adminCategoryService', function (adminCategoryService) {
-                        return adminCategoryService.getCategories();
-                    }
-                ]
-            }
         });
 
         $stateProvider.state('adminEditCategory', {
@@ -289,7 +282,7 @@ app.config([
             templateUrl: 'App/templates/admin/editTown.html',
             controller: 'adminEditTownController',
             resolve: {
-                category: [
+                town: [
                     '$stateParams', 'adminTownService', function ($stateParams, adminTownService) {
                         return adminTownService.getTown($stateParams.townId);
                     }]

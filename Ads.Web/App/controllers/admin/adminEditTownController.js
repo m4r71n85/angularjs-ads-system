@@ -1,12 +1,12 @@
 ﻿app.controller('adminEditTownController',
-['category', 'adminCategoryService', '$state', '$scope',
-    function (category, adminCategoryService, $state, $scope) {
-        $scope.category = category;
+['town', 'adminTownService', '$state', '$scope',
+    function (town, adminTownService, $state, $scope) {
+        $scope.town = town;
 
         $scope.edit = function () {
-            adminCategoryService.updateCategory($scope.category).then(
+            adminTownService.updateTown($scope.town).then(
                 function(data){
-                    $state.go('adminCategories')
+                    $state.go('adminTowns')
                 });
         }
     }
