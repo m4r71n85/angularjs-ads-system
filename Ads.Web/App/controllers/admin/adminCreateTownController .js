@@ -1,12 +1,12 @@
 ﻿'use strict';
 
-app.controller('adminCreateTownController ',
-['adminCategoryService', '$state', '$scope',
-    function (adminCategoryService, $state, $scope) {
+app.controller('adminCreateTownController',
+['adminTownService', '$state', '$scope',
+    function (adminTownService, $state, $scope) {
         $scope.create = function () {
-            adminCategoryService.createCategory($scope.category).then(
+            adminTownService.createTown($scope.town).then(
                 function () {
-                    $state.go('adminCategories')
+                    $state.go('adminTowns')
                 });
         }
     }

@@ -39,9 +39,9 @@ app.factory('adminTownService', [
             return deferred.promise;
         }
 
-        var getTown = function (toenId) {
+        var getTown = function (townId) {
             var deferred = $q.defer();
-            $http.get(apiUrl + 'api/admin/towns/' + catId)
+            $http.get(apiUrl + 'api/admin/towns/' + townId)
             .success(function (data) {
                 deferred.resolve(data);
             })
@@ -55,7 +55,7 @@ app.factory('adminTownService', [
             var deferred = $q.defer();
             $http.post(apiUrl + 'api/admin/towns', town)
             .success(function (data) {
-                toaster.pop('success', '', "Category created successfully.");
+                toaster.pop('success', '', "Town created successfully.");
                 deferred.resolve(data);
             })
             .error(function (data, status) {
